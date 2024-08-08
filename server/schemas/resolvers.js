@@ -8,7 +8,13 @@ const resolvers = {
     },
 
     user: async (parent, { userId }) => {
-      return User.findOne({ _id: userId });
+      // return User.findOne({ _id: userId }).populate({ path: 'solutions.problem' });
+      return User.findOne({ _id: userId })
+      .populate({ path: 'solutions', 
+        populate: {
+          path: 'problem',
+          model: 'Problem'
+      } });
     },
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     me: async (parent, args, context) => {
@@ -61,6 +67,12 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    tierUp: async (parent, {  solution }, context) => {
+      if (context.user) {
+        return User.findByIdAndUpdate(context.user._id, { $inc: { score: 1 }, $addToSet: { solutions: solution }  })
+      }
+      throw AuthenticationError
+    }
   },
 };
 

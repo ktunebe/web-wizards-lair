@@ -29,9 +29,17 @@ const userSchema = new Schema({
     default: 0
   },
   solutions: [
-    {
-      type: String
-    }
+    new Schema({
+      problem: {
+        type: Schema.Types.ObjectId,
+        ref: 'Problem',
+        required: true
+      },
+      solution: {
+        type: String,
+        required: true
+      }
+    })
   ]
 });
 
