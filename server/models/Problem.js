@@ -16,6 +16,10 @@ const problemSchema = new Schema({
     tier: {
         type: Number,
         required: true
+    },
+    instructions: {
+        type: String,
+        required: true
     }
 })
 

@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Problem } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -17,6 +17,18 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    problems: async () => {
+      if (context.user) {
+        return await Problem.find()
+      } 
+      throw AuthenticationError
+    },
+    problem: async (parent, { problemTier }) => {
+      if (context.user) {
+        return await Problem.findOne({ tier: problemTier })
+      }
+      throw AuthenticationError
+    }
   },
 
   Mutation: {
