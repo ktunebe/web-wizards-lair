@@ -23,13 +23,13 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    problems: async () => {
+    problems: async (parent, args, context) => {
       if (context.user) {
         return await Problem.find()
       } 
       throw AuthenticationError
     },
-    problem: async (parent, { problemTier }) => {
+    problem: async (parent, { problemTier }, context) => {
       if (context.user) {
         return await Problem.findOne({ tier: problemTier })
       }
