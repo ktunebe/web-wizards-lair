@@ -47,6 +47,8 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     removeUser: User    
     tierUp( solution: SolutionInput!): User
+    resetProgress: User
+    updateAvatar( avatar: String! ): User
   }
 `
 
