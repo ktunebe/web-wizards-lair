@@ -72,6 +72,18 @@ const resolvers = {
         return User.findByIdAndUpdate(context.user._id, { $inc: { score: 1 }, $addToSet: { solutions: solution }  })
       }
       throw AuthenticationError
+    },
+    resetProgress: async (parent, args, context) => {
+      if (context.user) {
+        return User.findByIdAndUpdate(context.user._id, { score: 0, solutions: [] },  )
+      }
+      throw AuthenticationError
+    },
+    updateAvater: async (parent, { avatar }, context) => {
+      if (context.user) {
+        return User.findByIdAndUpdate(context.user._id, { avatar })
+      }
+      throw AuthenticationError
     }
   },
 };
