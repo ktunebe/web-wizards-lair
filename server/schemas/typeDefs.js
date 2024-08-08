@@ -1,10 +1,20 @@
 const typeDefs = `
   type User {
+    _id: ID!
+    username: String!
+    email: String!
+    password: String!
+    avatar: String!
+    score: Number!
+    solutions: [ String ]
+  }
+
+  type Problem { 
     _id: ID
-    name: String
-    email: String
-    password: String
-    skills: [String]!
+    starterCode: String!
+    answer: String!
+    solution: String!
+    tier: Number!
   }
 
   type Auth {
