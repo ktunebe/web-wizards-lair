@@ -25,6 +25,6 @@ const typeDefs = `
 
     removeUser: User    
   }
-`;
+`
 
 module.exports = typeDefs;
