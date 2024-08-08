@@ -6,7 +6,7 @@ const problemSchema = new Schema({
         required: true
     },
     answer: {
-        type: String,
+        type: Mixed,
         required: true
     },
     solution: {
