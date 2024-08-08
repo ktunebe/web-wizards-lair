@@ -6,7 +6,7 @@ const problemSchema = new Schema({
         required: true
     },
     answer: {
-        type: Mixed,
+        type: Schema.Types.Mixed,
         required: true
     },
     solution: {
