@@ -1,7 +1,7 @@
 [
   {
     "instructions": "`add` returns the result of `num1` plus `num2`.",
-    "starterCode": "const num1 = 2\nconst num2 = 3\n\nvar add = function(num1, num2) {\n\n}",
+    "starterCode": "const num1 = 2\nconst num2 = 3\n\nvar add = function(num1, num2) {**}  \n\n add(2,4)",
     "answer": 5,
     "solution": "var add = function(num1, num2) {\n\treturn num1 + num2\n}",
     "tier": 1

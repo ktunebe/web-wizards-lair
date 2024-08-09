@@ -19,7 +19,11 @@ const resolvers = {
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id });
+        return User.findOne({ _id: context.user._id }).populate({ path: 'solutions', 
+          populate: {
+            path: 'problem',
+            model: 'Problem'
+        } });
       }
       throw AuthenticationError;
     },
@@ -38,8 +42,8 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { name, email, password }) => {
-      const user = await User.create({ name, email, password });
+    addUser: async (parent, { username, email, password, avatar }) => {
+      const user = await User.create({ username, email, password, avatar });
       const token = signToken(user);
 
       return { token, user };
@@ -75,13 +79,13 @@ const resolvers = {
     },
     resetProgress: async (parent, args, context) => {
       if (context.user) {
-        return User.findByIdAndUpdate(context.user._id, { score: 0, solutions: [] },  )
+        return User.findByIdAndUpdate(context.user._id, { score: 0, solutions: [] }, { new: true }  )
       }
       throw AuthenticationError
     },
-    updateAvater: async (parent, { avatar }, context) => {
+    updateAvatar: async (parent, { avatar }, context) => {
       if (context.user) {
-        return User.findByIdAndUpdate(context.user._id, { avatar })
+        return User.findByIdAndUpdate(context.user._id, { avatar }, { new: true })
       }
       throw AuthenticationError
     }
