@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Brawler",
+    "url": "/avatar-images/brawler.png"
+  },
+  {
+    "name": "Duelist",
+    "url": "/avatar-images/duelist.png"
+  },
+  {
+    "name": "Knight F",
+    "url": "/avatar-images/knight-f.png"
+  },
+  {
+    "name": "Knight M",
+    "url": "/avatar-images/knight-m.png"
+  },
+  {
+    "name": "Rogue F",
+    "url": "/avatar-images/rogue-f.png"
+  },
+  {
+    "name": "Rogue M",
+    "url": "/avatar-images/rogue-m.png"
+  },
+  {
+    "name": "Shadow Mage F",
+    "url": "/avatar-images/shadow-mage-f.png"
+  },
+  {
+    "name": "Shadow Mage M",
+    "url": "/avatar-images/shadow-mage-m.png"
+  }
+]

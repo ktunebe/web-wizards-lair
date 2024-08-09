@@ -353,6 +353,11 @@ body {
   min-height: 100%;
 }
 
+:root {
+  --secondary-bg-color: rgb(24, 22, 27);
+  --primary: rgb(51, 50, 59);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -361,6 +366,7 @@ body {
     'Segoe UI Symbol';
   font-size: 16px;
   color: #1a1a1a;
+  background-color: var(--primary);
 }
 
 h1,
@@ -883,7 +889,7 @@ a:hover {
 }
 
 .text-primary {
-  color: #2d3e50 !important;
+  color: var(--primary) !important;
 }
 
 .text-info {
@@ -920,7 +926,7 @@ a:hover {
 
 /* BACKGROUND UTILS */
 .bg-primary {
-  background-color: #2d3e50 !important;
+  background-color: var(--primary) !important;
 }
 
 .bg-info {
@@ -972,6 +978,22 @@ a:hover {
   display: flex !important;
 }
 
+.rounded-sm {
+  border-radius: 5%;
+}
+
+.rounded-md {
+  border-radius: 15%;
+}
+
+.rounded-lg {
+  border-radius: 25%;
+}
+
+.rounded-full {
+  border-radius: 50%;
+}
+
 .btn {
   text-align: center;
   display: inline-block;
@@ -1012,7 +1034,7 @@ a:hover {
 }
 
 .btn.btn-primary {
-  background-color: #2d3e50;
+  background-color: var(--primary);;
   color: #d9e9e8;
 }
 
