@@ -354,7 +354,7 @@ body {
 }
 
 :root {
-  --secondary-bg-color: rgb(24, 22, 27);
+  --secondary: rgb(24, 22, 27);
   --primary: rgb(51, 50, 59);
 }
 
@@ -927,6 +927,10 @@ a:hover {
 /* BACKGROUND UTILS */
 .bg-primary {
   background-color: var(--primary) !important;
+}
+
+.bg-secondary {
+  background-color: var(--secondary) !important;
 }
 
 .bg-info {
