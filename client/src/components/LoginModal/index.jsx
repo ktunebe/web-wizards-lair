@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Button, Modal, Tabs } from 'antd';
+
 import Login from './Login';
 import Signup from './Signup';
+
 
 const LoginModal = () => {
   const [open, setOpen] = useState(false);
@@ -10,13 +12,7 @@ const LoginModal = () => {
   const showModal = () => {
     setOpen(true);
   };
-  const handleOk = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setOpen(false);
-    }, 3000);
-  };
+
   const handleCancel = () => {
     setOpen(false);
   };
@@ -25,20 +21,31 @@ const LoginModal = () => {
   }
   return (
     <>
-      <Button type="primary" onClick={showModal}>
-        Open Modal with customized footer
+    {/* Button for Modal - absolute positioned because it will sit in the middle of the door on main page */}
+      <Button 
+        type="primary" 
+        danger 
+        onClick={showModal}
+        className={'text-dark font-bold mb-2 absolute-middle'}
+      >
+        Log in or Sign Up to Enter
       </Button>
+      {/* Login/signup Modal */}
       <Modal
         open={open}
-        onOk={handleOk}
         onCancel={handleCancel}
         footer={null}
         width={'60%'}
+        className="custom-modal"
       >
+      {/* Tabs to toggle between log in and sign up */}
          <Tabs
           defaultActiveKey="signup"
           type="card"
           size='large'
+          tabBarGutter={200}
+          // tabPosition='left'
+          centered
           onChange={handleFormTabClick}
           items={formTabs.map((tab) => {
             return {

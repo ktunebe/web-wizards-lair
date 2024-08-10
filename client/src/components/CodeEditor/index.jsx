@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react';
 import Editor from '@monaco-editor/react'
 
 const CodeEditor = () => {
@@ -44,3 +45,5 @@ const CodeEditor = () => {
 		</>
 	)
 }
+
+export default CodeEditor

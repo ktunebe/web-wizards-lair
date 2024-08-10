@@ -10,7 +10,7 @@ import AvatarBank from './AvatarBank';
 const Signup = () => {
   const [selectedAvatar, setSelectedAvatar] = useState('')
   const [formState, setFormState] = useState({
-    name: '',
+    username: '',
     email: '',
     password: '',
     avatar: '',
@@ -78,7 +78,7 @@ const Signup = () => {
                 <input
                   className="form-input"
                   placeholder="Your username"
-                  name="name"
+                  name="username"
                   type="text"
                   value={formState.name}
                   onChange={handleChange}
@@ -105,7 +105,7 @@ const Signup = () => {
                   handleSelectAvatar={handleSelectAvatar}
                 />
                 <button
-                  className="btn btn-block btn-info"
+                  className="btn btn-block btn-danger"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
