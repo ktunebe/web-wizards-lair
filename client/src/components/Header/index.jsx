@@ -9,15 +9,12 @@ const Header = () => {
   };
   return (
     <header className="bg-secondary text-light mb-4 py-3 display-flex align-center">
-      <div className="container flex-column justify-space-between-lg justify-center align-center text-center">
+      <div className="container flex-row justify-space-between-lg justify-center align-center text-center">
         <Link className="text-light" to="/">
           <h1 className="m-0" style={{ fontSize: '3rem' }}>
-            Proj 3 Starter
+            Project 3
           </h1>
         </Link>
-        <p className="m-0" style={{ fontSize: '1.75rem', fontWeight: '700' }}>
-          The starter code.
-        </p>
         <div>
           {Auth.loggedIn() ? (
             <>
@@ -28,16 +25,7 @@ const Header = () => {
                 Logout
               </button>
             </>
-          ) : (
-            <>
-              <Link className="btn btn-lg btn-primary m-2" to="/login">
-                Login
-              </Link>
-              <Link className="btn btn-lg btn-light m-2" to="/signup">
-                Signup
-              </Link>
-            </>
-          )}
+          ) : ''}
         </div>
       </div>
     </header>

@@ -8,6 +8,8 @@ const AvatarBank = ({ selectedAvatar, setSelectedAvatar, handleSelectAvatar }) =
 
   
   return (
+    <>
+    <h4 className='text-center text-light'>Choose an Avatar</h4>
     <div className='row justify-center m-4'>
       {avatars.map((avatar) => {
         return (
@@ -22,6 +24,7 @@ const AvatarBank = ({ selectedAvatar, setSelectedAvatar, handleSelectAvatar }) =
         )
       })}
     </div>
+    </>
   )
 }
 
