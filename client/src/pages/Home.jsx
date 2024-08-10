@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import Editor from '@monaco-editor/react';
+import LoginModal from '../components/LoginModal';
 
 const Home = () => {
   // useRef is a react hook similar to useState. Difference is all it holds is a reference to an element on the page
@@ -51,6 +52,7 @@ const Home = () => {
           </button>
         </div>
       </div>
+      <LoginModal />
     </main>
   );
 };

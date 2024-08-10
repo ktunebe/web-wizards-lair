@@ -1,18 +1,40 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
-import { ADD_PROFILE } from '../utils/mutations';
+import { ADD_PROFILE } from '../../utils/mutations';
 
-import Auth from '../utils/auth';
+import Auth from '../../utils/auth';
+import AvatarBank from './AvatarBank';
 
 const Signup = () => {
+  const [selectedAvatar, setSelectedAvatar] = useState('')
   const [formState, setFormState] = useState({
     name: '',
     email: '',
     password: '',
+    avatar: '',
   });
   const [addUser, { error, data }] = useMutation(ADD_PROFILE);
+
+  // Handle when you click on an avatar to select it (will run onClick of any avatar image)
+  const handleSelectAvatar = (e) => {
+    const avatarUrl = e.target.getAttribute('src');
+
+    // Update selectedAvatar first
+    setSelectedAvatar(avatarUrl);
+  
+    // Use the callback form of setFormState to ensure you have the latest state
+    setFormState(prevState => ({
+      ...prevState,
+      avatar: avatarUrl
+    }));
+  
+  }
+
+  useEffect(() => {
+    console.log(formState)
+  }, [formState])
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -77,6 +99,11 @@ const Signup = () => {
                   value={formState.password}
                   onChange={handleChange}
                 />
+                <AvatarBank 
+                  selectedAvatar={selectedAvatar}
+                  setSelectedAvatar={setSelectedAvatar}
+                  handleSelectAvatar={handleSelectAvatar}
+                />
                 <button
                   className="btn btn-block btn-info"
                   style={{ cursor: 'pointer' }}
@@ -95,6 +122,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
+      
     </main>
   );
 };
