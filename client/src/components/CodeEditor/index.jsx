@@ -1,10 +1,19 @@
 import { useRef, useState } from 'react';
 import Editor from '@monaco-editor/react'
+import codeRunner from '../../web-worker/codeRunner';
+import { Button, Flex } from 'antd';
+
+const starterCode = `const add = (num1, num2) => {
+//Do not touch above this line  
+	
+//Do not touch below this line
+}`
+const tests = [ 'add(2,4)', 'add(55,110)' ]
+const answers = [ 6, 165 ]
 
 const CodeEditor = () => {
 	// useRef is a react hook similar to useState. Difference is all it holds is a reference to an element on the page
 	const editorRef = useRef(null)
-	const [code, setCode] = useState('// type code here')
 
 	function handleEditorDidMount(editor, monaco) {
 		console.log('here')
@@ -20,28 +29,34 @@ const CodeEditor = () => {
 
 	function getEditorCode() {
 		if (editorRef.current) {
+			console.log(editorRef.current)
 			return editorRef.current.getValue()
 		}
 
 		return null
 	}
 
-	function showValue() {
-		alert(getEditorCode())
-		// console.log(code)
+	const runCode = () => {
+		let value = getEditorCode()
+		codeRunner(value, tests, answers)
 	}
+
 	return (
 		<>
 			<Editor
 				height="500px"
 				defaultLanguage="javascript"
-				defaultValue={code}
+				defaultValue={starterCode}
 				onMount={handleEditorDidMount}
 				onChange={handleEditorChange}
+				theme="vs-dark"
 			/>
-			<button className="btn btn-secondary" onClick={showValue}>
-				Click Me
-			</button>
+			<Flex justify='center' style={{margin: '16px'}}>
+				<Button size='large' className="primary" onClick={runCode}>
+					Test Me
+				</Button>
+			</Flex>
+
 		</>
 	)
 }
