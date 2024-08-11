@@ -26,7 +26,7 @@ const LoginModal = () => {
         type="primary" 
         danger 
         onClick={showModal}
-        className={'text-dark font-bold mb-2 absolute-middle'}
+        className={'text-dark font-bold absolute-middle'}
       >
         Log in or Sign Up to Enter
       </Button>
