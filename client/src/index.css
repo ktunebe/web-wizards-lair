@@ -1351,6 +1351,10 @@ label form [type='radio'] {
 	align-content: center;
 }
 
+.align-self-start {
+	align-self: flex-start;
+}
+
 .align-self-end {
 	align-self: flex-end;
 }
