@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
 import Auth from '../utils/auth'
-import { Flex, Button } from 'antd'
 import LoginModal from '../components/LoginModal'
 
 const doorStyles = {
@@ -8,6 +7,7 @@ const doorStyles = {
 	borderRadius: '10px',
 	overflow: 'hidden',
 	position: 'relative',
+	height: '100%',
 }
 
 // intervalId to clear to avoid memory leak
@@ -18,15 +18,15 @@ const Home = () => {
 	const [gameStarted, setGameStarted] = useState(false)
 	const [doorOpened, setDoorOpened] = useState(false)
 
-  // Start Game Handler
-  const handleStartGame = () => {
-    setGameStarted(true)
-    setTimeout(() => {
-      setDoorOpened(true)
-    }, 4000)
-  }
+	// Start Game Handler
+	const handleStartGame = () => {
+		setGameStarted(true)
+		setTimeout(() => {
+			setDoorOpened(true)
+		}, 4000)
+	}
 
-  // Flame flicker interval
+	// Flame flicker interval
 	useEffect(() => {
 		clearInterval(intervalId)
 		intervalId = setInterval(() => {
@@ -42,9 +42,7 @@ const Home = () => {
 
 	return (
 		<>
-			<div
-				className="flex-column justify-space-around container text-light text-center"
-				style={{ height: '30vh' }}>
+			<div className="container flex-column justify-between text-light text-center">
 				<h2 className="">Welcome to the Web Wizard's Lair</h2>
 				<p className="intro">
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi rem
@@ -57,61 +55,57 @@ const Home = () => {
 				</p>
 			</div>
 			{/* Door/Torches/Avatar - may make own component */}
-			<Flex
-				justify="center"
-				align="space-between"
-				className="container"
-				style={{ height: '40vh', width: '100%' }}>
+			<div className="col-12 flex-row align-content-between justify-center">
 				{/* Left torch and avatar */}
-				<Flex vertical justify='space-between' align="center" className="col-2 h-75 align-self-end">
-					<Flex vertical align='center'>
-            <div
-              className="outer-flame"
-              style={{
-                backgroundColor: `rgb(234, ${flameStyles.outerColorG}, 14)`,
-                transform: `rotate(${flameStyles.rotate}deg)`,
-                filter: `drop-shadow(5px -5px ${flameStyles.blur}px rgb(234, ${flameStyles.outerColorG}, 14))`,
-              }}>
-              <div
-                className="inner-flame"
-                style={{
-                  backgroundColor: `rgb(234, ${flameStyles.innerColorG}, 14)`,
-                }}></div>
-            </div>
-            <div className="sconce"></div>
-          </Flex>
-          {Auth.loggedIn() ? (
-            // Only show avatar once logged in
-            <img 
-            src='avatar-images/brawler.png'
-            className='w-100' 
-            style={{
-              transition: 'all 4s',
-              transform: gameStarted ? 'translateX(150%)' : '',
-              zIndex: 5
-            }}
-            />
-          ) : (
-            ''
-          )}
-				</Flex>
+				<div className=" flex-column col-2 justify-space-between">
+					<div className="flex-column align-center">
+						<div
+							className="outer-flame"
+							style={{
+								backgroundColor: `rgb(234, ${flameStyles.outerColorG}, 14)`,
+								transform: `rotate(${flameStyles.rotate}deg)`,
+								filter: `drop-shadow(5px -5px ${flameStyles.blur}px rgb(234, ${flameStyles.outerColorG}, 14))`,
+							}}>
+							<div
+								className="inner-flame"
+								style={{
+									backgroundColor: `rgb(234, ${flameStyles.innerColorG}, 14)`,
+								}}></div>
+						</div>
+						<div className="sconce"></div>
+					</div>
+					{Auth.loggedIn() ? (
+						// Only show avatar once logged in
+						<img
+							src="avatar-images/brawler.png"
+							// className='h-50'
+							style={{
+								transition: 'all 4s',
+								transform: gameStarted ? 'translateX(150%)' : '',
+								zIndex: 5,
+								// maxWidth: '100%',
+								maxHeight: '75%',
+							}}
+						/>
+					) : (
+						''
+					)}
+				</div>
 				{/* Door Background - position: relative */}
-				<div style={doorStyles} className="col-8">
-        {/* Nested ternary */}
+				<div style={doorStyles} className="col-7">
+					{/* Nested ternary */}
 					{!Auth.loggedIn() ? (
-          // Not logged in = LoginModal,
+						// Not logged in = LoginModal,
 						<LoginModal />
 					) : !gameStarted ? (
-          // Logged in but game not started = start game button,
-						<Button
-							type="primary"
-							danger
+						// Logged in but game not started = start game button,
+						<button
 							onClick={handleStartGame}
-							className={'text-dark font-bold absolute-middle'}>
+							className={'btn btn-danger text-dark font-bold absolute-middle'}>
 							Enter the Dungeon
-						</Button>
+						</button>
 					) : (
-          //  Logged in and game started = Josh, but invisible until door opens
+						//  Logged in and game started = Josh, but invisible until door opens
 						<img
 							src="/misc-images/archmage.png"
 							className="absolute-middle"
@@ -128,12 +122,12 @@ const Home = () => {
 							width: '100%',
 							height: '100%',
 							transition: 'all 4s',
-							transform: doorOpened ? 'translateY(-100%)' : ''
+							transform: doorOpened ? 'translateY(-100%)' : '',
 						}}
 					/>
 				</div>
-        {/* Right torch */}
-				<Flex vertical align="center" className="col-2 h-75 align-self-end">
+				{/* Right torch */}
+				<div className="flex-column align-center align-self-start col-2">
 					<div
 						className="outer-flame"
 						style={{
@@ -148,8 +142,8 @@ const Home = () => {
 							}}></div>
 					</div>
 					<div className="sconce"></div>
-				</Flex>
-			</Flex>
+				</div>
+			</div>
 		</>
 	)
 }

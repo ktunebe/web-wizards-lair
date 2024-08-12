@@ -1,63 +1,49 @@
-import { useState } from 'react';
-import { Button, Modal, Tabs } from 'antd';
+import { useState } from 'react'
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
+import { Dialog } from '@headlessui/react'
 
-import Login from './Login';
-import Signup from './Signup';
-
+import Login from './Login'
+import Signup from './Signup'
 
 const LoginModal = () => {
-  const [open, setOpen] = useState(false);
-  const formTabs = ['signup', 'login']
-  const [activeKey, setActiveKey] = useState('signup')
-  const showModal = () => {
-    setOpen(true);
-  };
+	const [isOpen, setIsOpen] = useState(false)
 
-  const handleCancel = () => {
-    setOpen(false);
-  };
-  const handleFormTabClick = (key) => {
-    setActiveKey(key)
-  }
-  return (
-    <>
-    {/* Button for Modal - absolute positioned because it will sit in the middle of the door on main page */}
-      <Button 
-        type="primary" 
-        danger 
-        onClick={showModal}
-        className={'text-dark font-bold absolute-middle'}
-      >
-        Log in or Sign Up to Enter
-      </Button>
-      {/* Login/signup Modal */}
-      <Modal
-        open={open}
-        onCancel={handleCancel}
-        footer={null}
-        width={'60%'}
-        className="custom-modal"
-      >
-      {/* Tabs to toggle between log in and sign up */}
-         <Tabs
-          defaultActiveKey="signup"
-          type="card"
-          size='large'
-          tabBarGutter={200}
-          // tabPosition='left'
-          centered
-          onChange={handleFormTabClick}
-          items={formTabs.map((tab) => {
-            return {
-              label: tab.toUpperCase(),
-              key: tab,
-              children: activeKey === 'signup' ? <Signup /> : <Login />,
-            };
-          })}
-        />
-      </Modal>
-    </>
-  );
-};
-export default LoginModal;
-
+	return (
+		<>
+			<button
+				onClick={() => setIsOpen(true)}
+				className="absolute-middle btn btn-danger">
+				Log In/Sign Up
+			</button>
+			<Dialog
+				open={isOpen}
+				onClose={() => setIsOpen(false)}
+				className="relative z-50">
+				<div className="dialog-backdrop" aria-hidden="true" />
+				<div className="dialog-container">
+					<div className="dialog-panel">
+						<TabGroup className="">
+							<TabList className="row justify-center mt-2">
+								<Tab className="col-4 bg-danger mx-2 text-white btn ">
+									Log In
+								</Tab>
+								<Tab className="col-4 bg-danger mx-2 text-white btn ">
+									Sign Up
+								</Tab>
+							</TabList>
+							<TabPanels className="">
+								<TabPanel>
+									<Login isOpen={isOpen} setIsOpen={setIsOpen} />
+								</TabPanel>
+								<TabPanel>
+									<Signup isOpen={isOpen} setIsOpen={setIsOpen} />
+								</TabPanel>
+							</TabPanels>
+						</TabGroup>
+					</div>
+				</div>
+			</Dialog>
+		</>
+	)
+}
+export default LoginModal
