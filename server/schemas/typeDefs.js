@@ -22,10 +22,13 @@ const typeDefs = `
   type Problem { 
     _id: ID
     starterCode: String!
-    answer: String!
+    answers: [ String! ]
+    tests: [ String! ]
     solution: String!
     tier: Int!
     instructions: String!
+    lore: String!
+    title: String!
   }
 
   type Auth {

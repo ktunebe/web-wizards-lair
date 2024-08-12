@@ -1,23 +1,33 @@
 [
   {
     "instructions": "`add` returns the result of `num1` plus `num2`.",
-    "starterCode": "const num1 = 2\nconst num2 = 3\n\nvar add = function(num1, num2) {**}  \n\n add(2,4)",
-    "answer": 5,
+    "starterCode": "const add = (num1, num2) => {\n//Don't edit above this line.  \n\n\n  //Don't edit below this line. \n}",
+    "answers": [ 5, 150 ],
+    "tests": [ "add(3,2)", "add(100,50)" ],
     "solution": "var add = function(num1, num2) {\n\treturn num1 + num2\n}",
-    "tier": 1
+    "tier": 1,
+    "lore": "This is the first of many trials you will face.",
+    "title": "The first hurdle"
   },
   {
-    "instructions": "If `num` is evenly divisible by 2, return the string `'even'`.\nIf `num` is not evenly divisible by 2, return the string `'odd'`.",
-    "starterCode": "const num = 2\n\nvar oddOrEven = function(num) {\n\n}",
-    "answer": "even",
-    "solution": "var oddOrEven = function (num) {\n\tif (num % 2 === 0) {\n\treturn 'even'\n} else {\n\treturn 'odd'\n}\n}",
-    "tier": 2
+    "instructions": "`add` returns the result of `num1` plus `num2`.",
+    "starterCode": "const add = (num1, num2) => {\n//Don't edit above this line.  \n\n\n  //Don't edit below this line. \n}",
+    "answers": [ 5, 150 ],
+    "tests": [ "add(3,2)", "add(100,50)" ],
+    "solution": "var add = function(num1, num2) {\n\treturn num1 + num2\n}",
+    "tier": 2,
+    "lore": "This is the first of many trials you will face.",
+    "title": "The second hurdle"
   },
   {
-    "instructions": "Add all of the numbers in the given `arr` array argument and return the total.",
-    "starterCode": "const arr = [1, 2, 3] \n\nvar sumArray = function(arr) {\n\n}",
-    "answer": 6,
-    "solution": "var sumArray = function(arr) { \n\tvar result = 0; \n\nfor (var i = 0; i < arr.length; i++) { \n\tvar currentNumber = arr[i] \nresult += currentNumber } \n\nreturn result \n}",
-    "tier": 3
+    "instructions": "`add` returns the result of `num1` plus `num2`.",
+    "starterCode": "const add = (num1, num2) => {\n//Don't edit above this line.  \n\n\n  //Don't edit below this line. \n}",
+    "answers": [ 5, 150 ],
+    "tests": [ "add(3,2)", "add(100,50)" ],
+    "solution": "var add = function(num1, num2) {\n\treturn num1 + num2\n}",
+    "tier": 3,
+    "lore": "This is the first of many trials you will face.",
+    "title": "The third hurdle"
   }
+
 ]
