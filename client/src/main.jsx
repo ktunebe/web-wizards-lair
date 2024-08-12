@@ -6,6 +6,7 @@ import App from './App.jsx'
 import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Error from './pages/Error';
+import EditorSandbox from './pages/EditorSandbox.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       }, {
         path: '/profiles/:userId',
         element: <Profile />
+      },
+      {
+        path: '/editor-sandbox',
+        element: <EditorSandbox />
       }
     ]
   }
