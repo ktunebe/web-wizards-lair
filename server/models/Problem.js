@@ -1,14 +1,23 @@
 const { Schema, model } = require('mongoose');
 
 const problemSchema = new Schema({
+    
     starterCode: {
         type: String,
         required: true
     },
-    answer: {
+    answers: [
+        {
         type: Schema.Types.Mixed,
         required: true
-    },
+    }
+],
+    tests: [
+        {
+        type: String,
+        required: true
+    }
+],
     solution: {
         type: String,
         required: true
@@ -18,6 +27,14 @@ const problemSchema = new Schema({
         required: true
     },
     instructions: {
+        type: String,
+        required: true
+    },
+    lore: {
+        type: String,
+        required: true
+    },
+    title: {
         type: String,
         required: true
     }
