@@ -1,14 +1,11 @@
-import CodeEditor from "../components/CodeEditor"
-import { Flex } from "antd"
-
+import CodeEditor from '../components/CodeEditor'
 
 const EditorSandbox = () => {
-    return (
-        <Flex style={{width: "80%", justifyContent: 'center'}} vertical>
-            <CodeEditor />
-        </Flex>
-    )
+	return (
+		<div className="flex-column w-80 justify-center">
+			<CodeEditor />
+		</div>
+	)
 }
 
 export default EditorSandbox
-

@@ -1,15 +1,14 @@
-import { useRef, useState } from 'react';
+import { useRef, useState } from 'react'
 import Editor from '@monaco-editor/react'
-import codeRunner from '../../web-worker/codeRunner';
-import { Button, Flex } from 'antd';
+import codeRunner from '../../web-worker/codeRunner'
 
 const starterCode = `const add = (num1, num2) => {
 //Do not touch above this line  
 	
 //Do not touch below this line
 }`
-const tests = [ 'add(2,4)', 'add(55,110)' ]
-const answers = [ 6, 165 ]
+const tests = ['add(2,4)', 'add(55,110)']
+const answers = [6, 165]
 
 const CodeEditor = () => {
 	// useRef is a react hook similar to useState. Difference is all it holds is a reference to an element on the page
@@ -51,12 +50,11 @@ const CodeEditor = () => {
 				onChange={handleEditorChange}
 				theme="vs-dark"
 			/>
-			<Flex justify='center' style={{margin: '16px'}}>
-				<Button size='large' className="primary" onClick={runCode}>
+			<div className="flex-row justify-center" style={{ margin: '16px' }}>
+				<button className="btn" onClick={runCode}>
 					Test Me
-				</Button>
-			</Flex>
-
+				</button>
+			</div>
 		</>
 	)
 }
