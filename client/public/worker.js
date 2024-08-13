@@ -9,7 +9,8 @@ console.log('Worker started!')
       for (i = 0; i < codeTests.length; i++) {
         const result = eval(`${codeToRun}  
           ${codeTests[i]}`)
-        testResults.push(result === answers[i])
+        testResults.push(result == answers[i])
+        console.log(result, answers[i])
         userOutput.push(result)
       }
       

@@ -35,26 +35,34 @@ export const QUERY_ME = gql`
 `;
 
 export const GET_PROBLEM = gql`
-  query GET_PROBLEM($problemTier: Int!) {
+  query Problem($problemTier: Int!) {
   problem(problemTier: $problemTier) {
-    answer
-    instructions
-    solution
+    _id
     starterCode
+    answers
+    tests
+    solution
     tier
+    instructions
+    lore
+    title
   }
 }
 `
 
 
 export const GET_ALL_PROBLEMS = gql`
-  query GET_ALL_PROBLEMS {
+  query Problems {
   problems {
     _id
-    answer
-    solution
     starterCode
+    answers
+    tests
+    solution
     tier
+    instructions
+    lore
+    title
   }
 }
 `
