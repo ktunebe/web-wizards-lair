@@ -342,6 +342,11 @@ template {
 END NORMALIZE CSS
 =================
 */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 *,
 *::before,
 *::after {
