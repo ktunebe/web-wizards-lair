@@ -4,9 +4,6 @@ import avatars from '../../assets/avatars.json'
 
 const AvatarBank = ({ selectedAvatar, setSelectedAvatar, handleSelectAvatar }) => {
   
-
-
-  
   return (
     <>
     <h4 className='text-center text-light'>Choose an Avatar</h4>

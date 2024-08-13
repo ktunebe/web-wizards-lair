@@ -6,7 +6,7 @@
     "tests": [ "add(3,2)", "add(100,50)" ],
     "solution": "var add = function(num1, num2) {\n\treturn num1 + num2\n}",
     "tier": 1,
-    "lore": "This is the first of many trials you will face.",
+    "lore": "This is the first of many trials you'll face,\nEach one a step closer to leaving this place.\nTake in two numbers and give me the sum,\nAnd I'll know that you're ready for what is to come.",
     "title": "The first hurdle"
   },
   {
@@ -16,7 +16,7 @@
     "tests": [ "add(3,2)", "add(100,50)" ],
     "solution": "var add = function(num1, num2) {\n\treturn num1 + num2\n}",
     "tier": 2,
-    "lore": "This is the first of many trials you will face.",
+    "lore": "This is the first of many trials you'll face,\nEach one a step closer to leaving this place.\nTake in two numbers and give me the sum,\nAnd I'll know that you're ready for what is to come.",
     "title": "The second hurdle"
   },
   {
@@ -26,7 +26,7 @@
     "tests": [ "add(3,2)", "add(100,50)" ],
     "solution": "var add = function(num1, num2) {\n\treturn num1 + num2\n}",
     "tier": 3,
-    "lore": "This is the first of many trials you will face.",
+    "lore": "This is the first of many trials you'll face,\nEach one a step closer to leaving this place.\nTake in two numbers and give me the sum,\nAnd I'll know that you're ready for what is to come.",
     "title": "The third hurdle"
   }
 

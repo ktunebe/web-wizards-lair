@@ -50,7 +50,7 @@ const Profile = () => {
       </div>
       <div>
         <ul>
-        {user.solutions.map(solution => {
+        {user.solutions?.map(solution => {
           return (
             <li>
               <h3>{solution.problem.title}</h3>
