@@ -7,10 +7,10 @@ const codeRunner = async (userAnswer, tests, answers, finishedEval) => {
       const worker = new Worker('/worker.js')
     
       worker.onmessage = e => {
-        const { testResults, userOutput } = e.data
+        const { testResults, userOutput, status } = e.data
         clearTimeout(timeoutId)
         worker.terminate()
-        finishedEval(testResults, userOutput)
+        finishedEval(testResults, userOutput, status, userAnswer)
       }
     
       worker.postMessage({

@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react'
-import { useQuery } from '@apollo/client'
+import { useQuery, useMutation } from '@apollo/client'
 import { GET_PROBLEM } from '../../utils/queries'
-
+import { TIER_UP } from '../../utils/mutations'
+ 
 import Editor from '@monaco-editor/react'
 import codeRunner from '../../web-worker/codeRunner'
 
@@ -16,9 +17,9 @@ import codeRunner from '../../web-worker/codeRunner'
 
 
 const CodeEditor = () => {
-	const { loading, error, data } = useQuery(GET_PROBLEM, { variables: { problemTier: 1 } })
-	console.log(data?.problem)
-
+	const { loading, error, data } = useQuery(GET_PROBLEM)
+	console.log(data)
+	const [ tierUp ] = useMutation(TIER_UP)
 	// useRef is a react hook similar to useState. Difference is all it holds is a reference to an element on the page
 	const editorRef = useRef(null)
 
@@ -28,13 +29,11 @@ const CodeEditor = () => {
 	}
 
 	function handleEditorChange(value, event) {
-		console.log(value)
 		// setCode(value)
 	}
 
 	function getEditorCode() {
 		if (editorRef.current) {
-			console.log(editorRef.current)
 			return editorRef.current.getValue()
 		}
 
@@ -46,8 +45,14 @@ const CodeEditor = () => {
 		codeRunner(value, data.problem.tests, data.problem.answers, finishedEval)
 	}
 
-	const finishedEval = (testResults, userOutput) => {
-		console.log(testResults, userOutput)
+	const finishedEval = async (testResults, userOutput, status, userAnswer) => {
+		console.log(data.problem._id)
+
+		if (status) {
+			await tierUp({
+				variables: { solution: { problem: data.problem._id, solution: userAnswer } }
+			})
+		}
 	}
 
 	if (loading) {

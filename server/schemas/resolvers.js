@@ -33,9 +33,11 @@ const resolvers = {
       } 
       throw AuthenticationError
     },
-    problem: async (parent, { problemTier }, context) => {
+    problem: async (parent, args, context) => {
       if (context.user) {
-        return await Problem.findOne({ tier: problemTier })
+        const { score, avatar } = await User.findById(context.user._id)
+        console.log(score, avatar)
+        return await Problem.findOne({ tier: score })
       }
       throw AuthenticationError
     }
@@ -73,6 +75,7 @@ const resolvers = {
     },
     tierUp: async (parent, {  solution }, context) => {
       if (context.user) {
+        console.log('hit')
         return User.findByIdAndUpdate(context.user._id, { $inc: { score: 1 }, $addToSet: { solutions: solution }  })
       }
       throw AuthenticationError

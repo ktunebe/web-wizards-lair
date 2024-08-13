@@ -5,12 +5,16 @@ console.log('Worker started!')
       const testResults = []
       const userOutput = []
       const { codeToRun, answers, codeTests } = data
-      
+      let status = true
       for (i = 0; i < codeTests.length; i++) {
         const result = eval(`${codeToRun}  
           ${codeTests[i]}`)
-        testResults.push(result == answers[i])
-        console.log(result, answers[i])
+        if (result == answers[i]){
+          testResults.push(true)
+        } else {
+          testResults.push(false)
+          status = false
+        }
         userOutput.push(result)
       }
       
@@ -18,7 +22,7 @@ console.log('Worker started!')
       //   ? 'CORRECT'
       //   : 'INCORRECT'
     
-      postMessage({ testResults, userOutput })
+      postMessage({ testResults, userOutput, status })
     }
     
     

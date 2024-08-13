@@ -29,13 +29,6 @@ export const TIER_UP = gql`
   mutation TIER_UP($solution: SolutionInput!) {
   tierUp(solution: $solution) {
     username
-    score
-    solutions {
-      problem {
-        tier
-      }
-      solution
-    }
   }
 }
 `
