@@ -2,22 +2,15 @@ console.log('Main started!')
 
 let timeoutId
 // get this from codemirror
-const codeRunner = (userAnswer, tests, answers) => {
+const codeRunner = async (userAnswer, tests, answers, finishedEval) => {
     if (window.Worker) {
       const worker = new Worker('/worker.js')
     
       worker.onmessage = e => {
-        // switch(e.data.type) {
-        //   case 'CORRECT':
-        //     alert('Answer is correct!')
-        //     break
-        //   default:
-        //     alert('Too bad, try again')
-        // }
         const { testResults, userOutput } = e.data
-        console.log(testResults, userOutput)
         clearTimeout(timeoutId)
         worker.terminate()
+        finishedEval(testResults, userOutput)
       }
     
       worker.postMessage({
@@ -35,6 +28,8 @@ const codeRunner = (userAnswer, tests, answers) => {
       console.log('Workers are not supported')
     }
 }
+
+
 
 
 export default codeRunner

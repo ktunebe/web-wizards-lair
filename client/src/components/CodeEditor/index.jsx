@@ -37,7 +37,11 @@ const CodeEditor = () => {
 
 	const runCode = () => {
 		let value = getEditorCode()
-		codeRunner(value, tests, answers)
+		codeRunner(value, tests, answers, finishedEval)
+	}
+
+	const finishedEval = (testResults, userOutput) => {
+		console.log(testResults, userOutput)
 	}
 
 	return (
