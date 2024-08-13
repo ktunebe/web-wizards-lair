@@ -35,8 +35,8 @@ export const QUERY_ME = gql`
 `;
 
 export const GET_PROBLEM = gql`
-  query Problem($problemTier: Int!) {
-  problem(problemTier: $problemTier) {
+  query Problem {
+  problem {
     _id
     starterCode
     answers
