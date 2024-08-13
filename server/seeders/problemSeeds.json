@@ -6,7 +6,7 @@
     "tests": [ "add(3,2)", "add(100,50)" ],
     "solution": "var add = function(num1, num2) {\n\treturn num1 + num2\n}",
     "tier": 1,
-    "lore": "Your first task on the road to staying alive,\nIs showing that two plus three equals five.\nBut I'll be impressed if your function predicts,\nTwo-hundred and twelve plus three-hundred and six.",
+    "lore": "Your first task on the road to staying alive,\nIs showing that two plus three equals five.\nBut I'll be impressed if your function predicts,\nTwo hundred and twelve plus three hundred and six.",
     "title": "The first hurdle"
   },
   {
@@ -16,7 +16,7 @@
     "tests": [ "add(3,2)", "add(100,50)" ],
     "solution": "var add = function(num1, num2) {\n\treturn num1 + num2\n}",
     "tier": 2,
-    "lore": "Your first task on the road to staying alive,\nIs showing that two plus three equals five.\nBut I'll be impressed if your function predicts,\nTwo-hundred and twelve plus three-hundred and six.",
+    "lore": "Your first task on the road to staying alive,\nIs showing that two plus three equals five.\nBut I'll be impressed if your function predicts,\nTwo hundred and twelve plus three hundred and six.",
     "title": "The second hurdle"
   },
   {
@@ -26,7 +26,7 @@
     "tests": [ "add(3,2)", "add(100,50)" ],
     "solution": "var add = function(num1, num2) {\n\treturn num1 + num2\n}",
     "tier": 3,
-    "lore": "Your first task on the road to staying alive,\nIs showing that two plus three equals five.\nBut I'll be impressed if your function predicts,\nTwo-hundred and twelve plus three-hundred and six.",
+    "lore": "Your first task on the road to staying alive,\nIs showing that two plus three equals five.\nBut I'll be impressed if your function predicts,\nTwo hundred and twelve plus three hundred and six.",
     "title": "The third hurdle"
   }
 
