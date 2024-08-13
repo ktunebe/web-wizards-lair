@@ -1,6 +1,9 @@
 import { useRef, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Auth from '../utils/auth'
 import LoginModal from '../components/LoginModal'
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from '../utils/queries';
 
 const doorStyles = {
 	backgroundColor: 'black',
@@ -14,9 +17,14 @@ const doorStyles = {
 let intervalId
 
 const Home = () => {
+
+	const { loading, data } = useQuery(QUERY_ME)
+	const user = data?.me || {};
+
 	const [flameStyles, setFlameStyles] = useState({})
 	const [gameStarted, setGameStarted] = useState(false)
 	const [doorOpened, setDoorOpened] = useState(false)
+	const navigate = useNavigate()
 
 	// Start Game Handler
 	const handleStartGame = () => {
@@ -24,6 +32,9 @@ const Home = () => {
 		setTimeout(() => {
 			setDoorOpened(true)
 		}, 4000)
+		setTimeout(() => {
+			navigate('/editor-sandbox')
+		}, 10000)
 	}
 
 	// Flame flicker interval
@@ -77,7 +88,7 @@ const Home = () => {
 					{Auth.loggedIn() ? (
 						// Only show avatar once logged in
 						<img
-							src="avatar-images/brawler.png"
+							src={user.avatar}
 							// className='h-50'
 							style={{
 								transition: 'all 4s',
