@@ -18,7 +18,7 @@ const Profile = () => {
 
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_PROFILE` query
   const user = data?.me || data?.user || {};
-
+ console.log(user)
   // Use React Router's `<Redirect />` component to redirect to personal user page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data._id === userId) {
     return <Navigate to="/me" />;
@@ -28,7 +28,7 @@ const Profile = () => {
     return <div>Loading...</div>;
   }
 
-  if (!user?.name) {
+  if (!user?.username) {
     return (
       <h4>
         You need to be logged in to see your user page. Use the navigation
@@ -39,9 +39,27 @@ const Profile = () => {
 
   return (
     <div className='container'>
+      <div>
       <h1 className="card-header">
-        {user.name}
+        {user.username}
       </h1>
+      <div>
+        <h2>Dungeon Levels Conquered {user.score}</h2>
+        <img src={user.avatar}></img>
+      </div>
+      </div>
+      <div>
+        <ul>
+        {user.solutions.map(solution => {
+          return (
+            <li>
+              <h3>{solution.problem.title}</h3>
+              <p>{solution.solution}</p>
+            </li>
+          )
+        })}
+        </ul>
+      </div>
     </div>
   );
 };

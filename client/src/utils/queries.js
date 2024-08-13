@@ -30,6 +30,12 @@ export const QUERY_ME = gql`
       avatar
       email
       score
+      solutions {
+        problem {
+         title
+          }
+        solution
+      }
     }
   }
 `;
