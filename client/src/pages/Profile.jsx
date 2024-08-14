@@ -46,7 +46,7 @@ const Profile = () => {
           {user.username}
         </h1>
         <div className='flex space-x-16 justify-center'>
-          <img className='nes-container is-rounded flex-col' src={'/avatar-images/shadow-mage-f.png'}></img>  {/* src={user.avatar} */}
+          <img className='nes-container is-rounded flex-col' src={user.avatar}></img>  {/* '/avatar-images/shadow-mage-f.png' */}
 
           <div className='flex flex-col space-y-4'>
             <h2>Dungeon Levels Conquered {user.score}</h2>
