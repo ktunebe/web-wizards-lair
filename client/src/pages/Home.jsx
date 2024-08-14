@@ -4,7 +4,7 @@ import Auth from '../utils/auth'
 import LoginModal from '../components/LoginModal'
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
-
+console.log(Auth.getProfile())
 const doorStyles = {
 	backgroundColor: 'black',
 	borderRadius: '10px',
