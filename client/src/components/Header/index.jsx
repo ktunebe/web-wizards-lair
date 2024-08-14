@@ -8,7 +8,7 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className="bg-secondary text-light mb-4 py-3 display-flex align-center">
+    <header className="bg-secondary text-light mb-4 py-3 flex align-center">
       <div className="container flex justify-between align-center text-center">
         <Link className="text-light" to="/">
           <h1 className="m-0" style={{ fontSize: '2rem' }}>

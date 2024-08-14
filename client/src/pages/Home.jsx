@@ -55,7 +55,7 @@ const Home = () => {
 		<>
 			<div className="container flex flex-col justify-between text-light text-center">
 				<h2 className="">Welcome to the Web Wizard's Lair</h2>
-				<p className="intro" style={{fontSize: '1.5em', }}>
+				<p className="">
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi rem
 					necessitatibus suscipit saepe porro deleniti dicta officia eius
 					delectus consequuntur. Beatae saepe culpa, molestias autem explicabo

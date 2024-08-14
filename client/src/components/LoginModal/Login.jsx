@@ -48,7 +48,7 @@ const Login = ({ isOpen, setIsOpen }) => {
 		<main className="flex justify-center mb-4">
 			<div className="w-3/4">
 				<div className="">
-					<h4 className="card-header bg-dark text-light p-2">Login</h4>
+					<h4 className="bg-dark text-light p-2">Login</h4>
 					<div className="card-body">
 						{data ? (
 							<p>
@@ -91,7 +91,7 @@ const Login = ({ isOpen, setIsOpen }) => {
 						)}
 
 						{error && (
-							<div className="my-3 p-3 bg-danger text-white">
+							<div className="my-3 p-3 bg-red-500 text-white">
 								{error.message}
 							</div>
 						)}
