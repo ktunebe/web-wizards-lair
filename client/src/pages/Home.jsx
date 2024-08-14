@@ -53,7 +53,7 @@ const Home = () => {
 
 	return (
 		<>
-			<div className="container flex flex-col justify-between text-light text-center">
+			<div className="container flex flex-col justify-between text-center">
 				<h2 className="">Welcome to the Web Wizard's Lair</h2>
 				<p className="">
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi rem
