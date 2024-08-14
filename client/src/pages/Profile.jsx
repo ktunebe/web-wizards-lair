@@ -37,16 +37,16 @@ const Profile = () => {
     );
   }
 
+  const tempAvatar = '/avatar-images/shadow-mage-f.png'
+
   const userProgress = (user.score / 10 ) * 100
 
   return (
-    <div className='container'>
+    <div className='nes-container with-title is-dark is-centered'>
+    <p className="title nes-text" style={{ fontSize: '2rem' }}>{user.username}</p>
       <div>
-        <h1 className="card-header text-center pb-10">
-          {user.username}
-        </h1>
-        <div className='flex space-x-16 justify-center'>
-          <img className='nes-container is-rounded flex-col' src={user.avatar}></img>  {/* '/avatar-images/shadow-mage-f.png' */}
+        <div className='flex space-x-16 justify-center items-center'>
+          <img className='nes-container is-rounded flex-col' src={tempAvatar}></img> 
 
           <div className='flex flex-col space-y-4'>
             <h2>Dungeon Levels Conquered {user.score}</h2>
