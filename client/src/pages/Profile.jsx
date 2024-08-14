@@ -37,16 +37,22 @@ const Profile = () => {
     );
   }
 
+  const userProgress = (user.score / 10 ) * 100
+
   return (
     <div className='container'>
       <div>
-      <h1 className="card-header">
-        {user.username}
-      </h1>
-      <div>
-        <h2>Dungeon Levels Conquered {user.score}</h2>
-        <img src={user.avatar}></img>
-      </div>
+        <h1 className="card-header text-center pb-10">
+          {user.username}
+        </h1>
+        <div className='flex space-x-16 justify-center'>
+          <img className='nes-container is-rounded flex-col' src={'/avatar-images/shadow-mage-f.png'}></img>  {/* src={user.avatar} */}
+
+          <div className='flex flex-col space-y-4'>
+            <h2>Dungeon Levels Conquered {user.score}</h2>
+            <progress class="nes-progress is-success" value={userProgress} max="100"></progress>
+          </div>
+        </div>
       </div>
       <div>
         <ul>

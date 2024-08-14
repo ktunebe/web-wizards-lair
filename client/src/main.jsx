@@ -1,6 +1,8 @@
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom/dist'
+import "nes.css/css/nes.min.css";
 import './index.css'
+
 
 import App from './App.jsx'
 import Home from './pages/Home';
