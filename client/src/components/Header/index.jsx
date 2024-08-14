@@ -9,7 +9,7 @@ const Header = () => {
   };
   return (
     <header className="bg-secondary text-light mb-4 py-3 display-flex align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center text-center">
+      <div className="container flex justify-between align-center text-center">
         <Link className="text-light" to="/">
           <h1 className="m-0" style={{ fontSize: '2rem' }}>
             Project 3

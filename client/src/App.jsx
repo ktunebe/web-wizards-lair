@@ -34,10 +34,10 @@ const client = new ApolloClient({
 function App() {
 	return (
 		<ApolloProvider client={client}>
-			<div className="flex-column justify-flex-start min-100-vh">
+			<div className="flex flex-col justify-start min-100-vh">
 				<Header />
 				<div
-					className="flex-column align-center justify-space-between"
+					className="flex flex-col align-center justify-between"
 					style={{ flex: 1, overflowY: 'auto' }}>
 					<Outlet />
 				</div>

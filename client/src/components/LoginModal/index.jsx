@@ -23,11 +23,11 @@ const LoginModal = () => {
 				<div className="dialog-container">
 					<div className="dialog-panel">
 						<TabGroup className="">
-							<TabList className="row justify-center mt-2">
-								<Tab className="col-4 bg-danger mx-2 text-white btn ">
+							<TabList className="flex flex-wrap justify-center mt-2">
+								<Tab className="w-1/3 bg-danger mx-2 text-white btn ">
 									Log In
 								</Tab>
-								<Tab className="col-4 bg-danger mx-2 text-white btn ">
+								<Tab className="w-1/3 bg-danger mx-2 text-white btn ">
 									Sign Up
 								</Tab>
 							</TabList>

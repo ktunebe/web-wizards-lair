@@ -53,7 +53,7 @@ const Home = () => {
 
 	return (
 		<>
-			<div className="container flex-column justify-between text-light text-center">
+			<div className="container flex flex-col justify-between text-light text-center">
 				<h2 className="">Welcome to the Web Wizard's Lair</h2>
 				<p className="intro" style={{fontSize: '1.5em', }}>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi rem
@@ -66,22 +66,19 @@ const Home = () => {
 				</p>
 			</div>
 			{/* Door/Torches/Avatar - may make own component */}
-			<div className="col-12 flex-row align-content-between justify-center">
+			<div className="w-full max-w-screen-xl flex content-between justify-center">
 				{/* Left torch and avatar */}
-				<div className=" flex-column col-2 justify-space-between">
-					<div className="flex-column align-center">
+				<div className="flex flex-col w-1/6 justify-between">
+					<div className="flex flex-col items-center">
 						<div
-							className="outer-flame"
+							className="outer-flame border-l-4 border-t-[6px] border-b-4 border-r-[6px] "
 							style={{
-								backgroundColor: `rgb(234, ${flameStyles.outerColorG}, 14)`,
+								backgroundColor: `rgb(234, ${flameStyles.innerColorG}, 14)`,
 								transform: `rotate(${flameStyles.rotate}deg)`,
 								filter: `drop-shadow(5px -5px ${flameStyles.blur}px rgb(234, ${flameStyles.outerColorG}, 14))`,
+								borderRadius: '80% 0 55% 50% / 55% 0 80% 50%',
+								borderColor: `rgb(234, ${flameStyles.outerColorG}, 14)`,
 							}}>
-							<div
-								className="inner-flame"
-								style={{
-									backgroundColor: `rgb(234, ${flameStyles.innerColorG}, 14)`,
-								}}></div>
 						</div>
 						<div className="sconce"></div>
 					</div>
@@ -89,13 +86,13 @@ const Home = () => {
 						// Only show avatar once logged in
 						<img
 							src={user.avatar}
-							// className='h-50'
+							className='w-3/4'
 							style={{
 								transition: 'all 4s',
 								transform: gameStarted ? 'translateX(150%)' : '',
 								zIndex: 5,
 								// maxWidth: '100%',
-								maxHeight: '75%',
+								// maxHeight: '75%',
 							}}
 						/>
 					) : (
@@ -103,7 +100,7 @@ const Home = () => {
 					)}
 				</div>
 				{/* Door Background - position: relative */}
-				<div style={doorStyles} className="col-7">
+				<div style={doorStyles} className="w-7/12">
 					{/* Nested ternary */}
 					{!Auth.loggedIn() ? (
 						// Not logged in = LoginModal,
@@ -138,22 +135,19 @@ const Home = () => {
 					/>
 				</div>
 				{/* Right torch */}
-				<div className="flex-column align-center align-self-start col-2">
-					<div
-						className="outer-flame"
-						style={{
-							backgroundColor: `rgb(234, ${flameStyles.outerColorG}, 14)`,
-							transform: `rotate(${flameStyles.rotate}deg)`,
-							filter: `drop-shadow(5px -5px ${flameStyles.blur}px rgb(234, ${flameStyles.outerColorG}, 14))`,
-						}}>
+					<div className="flex flex-col items-center w-1/6">
 						<div
-							className="inner-flame"
+							className="outer-flame border-l-4 border-t-[6px] border-b-4 border-r-[6px] "
 							style={{
 								backgroundColor: `rgb(234, ${flameStyles.innerColorG}, 14)`,
-							}}></div>
+								transform: `rotate(${flameStyles.rotate}deg)`,
+								filter: `drop-shadow(5px -5px ${flameStyles.blur}px rgb(234, ${flameStyles.outerColorG}, 14))`,
+								borderRadius: '80% 0 55% 50% / 55% 0 80% 50%',
+								borderColor: `rgb(234, ${flameStyles.outerColorG}, 14)`,
+							}}>
+						</div>
+						<div className="sconce"></div>
 					</div>
-					<div className="sconce"></div>
-				</div>
 			</div>
 		</>
 	)

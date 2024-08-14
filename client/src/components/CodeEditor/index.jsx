@@ -90,7 +90,7 @@ const CodeEditor = () => {
 				onChange={handleEditorChange}
 				theme="vs-dark"
 			/>
-			<div className="flex-row justify-center" style={{ margin: '16px' }}>
+			<div className="flex justify-center" style={{ margin: '16px' }}>
 				<button className="btn" onClick={runCode}>
 					Test Me
 				</button>

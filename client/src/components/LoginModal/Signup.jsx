@@ -66,8 +66,8 @@ const Signup = ({ isOpen, setIsOpen }) => {
 	}
 
 	return (
-		<main className="flex-row justify-center mb-4">
-			<div className="col-12 col-lg-10">
+		<main className="flex justify-center mb-4">
+			<div className="w-3/4">
 				<div className="card">
 					<h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
 					<div className="card-body">
@@ -107,7 +107,7 @@ const Signup = ({ isOpen, setIsOpen }) => {
 									setSelectedAvatar={setSelectedAvatar}
 									handleSelectAvatar={handleSelectAvatar}
 								/>
-								<div className="flex-row justify-flex-end ">
+								<div className="flex justify-end ">
 									<button
 										className="btn btn-danger"
 										style={{ cursor: 'pointer' }}

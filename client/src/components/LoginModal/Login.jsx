@@ -45,8 +45,8 @@ const Login = ({ isOpen, setIsOpen }) => {
 	}
 
 	return (
-		<main className="flex-row justify-center mb-4">
-			<div className="col-12 col-lg-10">
+		<main className="flex justify-center mb-4">
+			<div className="w-3/4">
 				<div className="">
 					<h4 className="card-header bg-dark text-light p-2">Login</h4>
 					<div className="card-body">
@@ -73,7 +73,7 @@ const Login = ({ isOpen, setIsOpen }) => {
 									value={formState.password}
 									onChange={handleChange}
 								/>
-								<div className="flex-row justify-flex-end ">
+								<div className="flex justify-end ">
 									<button
 										className="btn btn-danger"
 										style={{ cursor: 'pointer' }}
