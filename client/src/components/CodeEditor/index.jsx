@@ -79,7 +79,7 @@ const CodeEditor = () => {
 						/>
 			)}
 
-			<div className='flex flex-row w-full md:w-3/4 justify-between flex-wrap md:flex-nowrap'>
+			<div className='container flex flex-row w-full md:w-3/4 justify-between flex-wrap md:flex-nowrap'>
 
 				<div className='w-full md:w-1/2 order-2 md:order-1'>
 					<Editor

@@ -7,10 +7,14 @@ console.log('Worker started!')
       const { codeToRun, answers, codeTests } = data
 
       let status = true
-      for (i = 0; i < codeTests.length; i++) {
+      for (zebra = 0; zebra < codeTests.length; zebra++) {
         const result = eval(`${codeToRun}  
-          ${codeTests[i]}`)
-        if (JSON.stringify(result).replaceAll(' ', '') == answers[i].replaceAll(' ', '')){
+          ${codeTests[zebra]}`)
+          console.log(JSON.stringify(result).replaceAll(' ', ''), answers[zebra].replaceAll(' ', ''))
+
+          console.log(answers[zebra])
+          console.log(zebra)
+        if (JSON.stringify(result).replaceAll(' ', '') == answers[zebra].replaceAll(' ', '')){
           testResults.push(true)
         } else {
           testResults.push(false)

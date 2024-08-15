@@ -80,7 +80,7 @@ const Signup = ({ isOpen, setIsOpen }) => {
 								<Field className="py-4">
 									<Label className="text-sm/6 font-medium text-white">Username</Label>
 									<Input
-										placeholder="Your email"
+										placeholder="Your username"
 										name="username"
 										type="username"
 										value={formState.username}
