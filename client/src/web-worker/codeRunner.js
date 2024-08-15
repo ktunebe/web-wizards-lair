@@ -10,6 +10,7 @@ const codeRunner = async (userAnswer, tests, answers, finishedEval) => {
         const { testResults, userOutput, status } = e.data
         clearTimeout(timeoutId)
         worker.terminate()
+        console.log(testResults)
         finishedEval(testResults, userOutput, status, userAnswer)
       }
     

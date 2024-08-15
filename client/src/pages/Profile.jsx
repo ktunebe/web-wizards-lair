@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_USER, QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
+import AuthCheck from '../utils/AuthCheck'
 
 const Profile = () => {
   const { userId } = useParams();
@@ -18,7 +19,6 @@ const Profile = () => {
 
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_PROFILE` query
   const user = data?.me || data?.user || {};
- console.log(user)
   // Use React Router's `<Redirect />` component to redirect to personal user page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data._id === userId) {
     return <Navigate to="/me" />;
