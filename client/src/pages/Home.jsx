@@ -4,7 +4,6 @@ import Auth from '../utils/auth'
 import LoginModal from '../components/LoginModal'
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
-console.log(Auth.getProfile())
 const doorStyles = {
 	backgroundColor: 'black',
 	borderRadius: '10px',
@@ -56,13 +55,15 @@ const Home = () => {
 			<div className="container flex flex-col justify-between text-center">
 				<h2 className="">Welcome to the Web Wizard's Lair</h2>
 				<p className="">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi rem
-					necessitatibus suscipit saepe porro deleniti dicta officia eius
-					delectus consequuntur. Beatae saepe culpa, molestias autem explicabo
-					aspernatur veritatis possimus officiis? Lorem ipsum dolor sit amet,
-					consectetur adipisicing elit. Ab ipsam, itaque iusto culpa nihil
-					quisquam ipsum impedit tenetur earum facilis natus aut, reprehenderit
-					sint alias inventore maiores ea autem magni?
+				Greetings, Wayward Traveler, <br/><br/>
+		
+Welcome to the shadows of my domain, where the arcane and the digital intertwine in mysterious harmony. Here, amidst the tangled webs of code and the cryptic incantations of JavaScript, you shall find both peril and power.
+<br/><br/>
+Beware: The path is fraught with pitfalls, where broken links lurk and deprecated functions await to ensnare the unwary. Errors will rise like phantoms, and bugs may twist and writhe in the dark corners of your code.
+<br/><br/>
+But fear not, for within these shadowed halls lie the tools to master the craft—debuggers, version control, and frameworks of great potency. Harness them wisely, for in this dungeon of web development, knowledge is your greatest ally.
+<br/><br/>
+Tread carefully, and may your code ever be free of maledictions.
 				</p>
 			</div>
 			{/* Door/Torches/Avatar - may make own component */}
