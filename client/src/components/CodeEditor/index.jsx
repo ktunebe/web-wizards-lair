@@ -2,10 +2,13 @@ import { useRef, useState } from 'react'
 import { useQuery, useMutation } from '@apollo/client'
 import { GET_PROBLEM } from '../../utils/queries'
 import { TIER_UP } from '../../utils/mutations'
+import { QUERY_ME } from '../../utils/queries'
 
 import PassFailModal from './PassFailModal'
 import Editor from '@monaco-editor/react'
 import codeRunner from '../../web-worker/codeRunner'
+
+import './styles.css'
 
 // const starterCode = `const add = (num1, num2) => {
 // //Do not touch above this line
@@ -20,7 +23,12 @@ const CodeEditor = () => {
 	const [testResultsArray, setTestResultsArray] = useState([])
 	const [answerStatus, setAnswerStatus] = useState(false)
 	const { loading, error, data } = useQuery(GET_PROBLEM)
-	console.log(data)
+	const { data: userData } = useQuery(QUERY_ME)
+
+
+	const user = userData?.me || {};
+	const tempAvatar = '/avatar-images/shadow-mage-f.png'
+
 	const [tierUp] = useMutation(TIER_UP)
 	// useRef is a react hook similar to useState. Difference is all it holds is a reference to an element on the page
 	const editorRef = useRef(null)
@@ -77,24 +85,41 @@ const CodeEditor = () => {
 				answerStatus={answerStatus}
 				setAnswerStatus={setAnswerStatus}
 			/>
-			<p
-				style={{ whiteSpace: 'pre-line' }}
-				className="text-white py-4 text-center">
-				{data.problem?.lore}
-			</p>
-			<Editor
-				height="500px"
-				defaultLanguage="javascript"
-				defaultValue={data?.problem.starterCode}
-				onMount={handleEditorDidMount}
-				onChange={handleEditorChange}
-				theme="vs-dark"
-			/>
-			<div className="flex justify-center" style={{ margin: '16px' }}>
-				<button className="btn" onClick={runCode}>
-					Test Me
-				</button>
+
+			<div className='flex flex-row w-full md:w-3/4 justify-between flex-wrap md:flex-nowrap'>
+
+				<div className='w-full md:w-1/2 order-2 md:order-1'>
+					<Editor
+						height="500px"
+						width='100%'
+						defaultLanguage="javascript"
+						defaultValue={data?.problem.starterCode}
+						options={{
+							minimap: {
+							enabled: false,
+							},
+						}}
+						onMount={handleEditorDidMount}
+						onChange={handleEditorChange}
+						theme="vs-dark"
+					/>
+				</div>
+				<p
+					style={{ whiteSpace: 'pre-line' }}
+					className="text-black py-4 text-center nes-balloon from-left w-full md:w-1/2">
+					{data.problem?.lore}
+				</p>
 			</div>
+				<div className="flex justify-center" style={{ margin: '16px' }}>
+					<button className="btn" onClick={runCode}>
+						Submit
+					</button>
+				</div>
+				<img 
+					className='avatar-style' 
+					src={tempAvatar} 
+					
+				/>
 		</>
 	)
 }
