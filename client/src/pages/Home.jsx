@@ -53,9 +53,12 @@ const Home = () => {
 
 	return (
 		<>
-			<div className="container flex flex-col justify-between text-center">
+			<div className="container flex flex-col justify-between text-center font-pressStart" style={{color: '#95A3A4'}}>
 				<h2 className="">Welcome to the Web Wizard's Lair</h2>
-				<p className="">
+				<p 
+				className="font-pokemon"
+				
+				>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi rem
 					necessitatibus suscipit saepe porro deleniti dicta officia eius
 					delectus consequuntur. Beatae saepe culpa, molestias autem explicabo

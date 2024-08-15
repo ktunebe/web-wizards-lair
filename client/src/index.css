@@ -361,14 +361,28 @@ body {
 :root {
 	--secondary: rgb(24, 22, 27);
 	--primary: rgb(51, 50, 59);
+	--color-jet: #33323b;
+	--color-lannister-red: #86090A;
+	--color-lannister-gold: #C2AD77;
+
+}
+
+@font-face {
+  font-family: 'pokemon';
+  src: url('../src/assets/fonts/PokemonGb-RAeo.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'pressStart';
+  src: url('../src/assets/fonts/PressStart2P-Regular.ttf') format('truetype');
 }
 
 body {
 	margin: 0;
 	padding: 0;
-	font-family: "Press Start 2P", -apple-system, BlinkMacSystemFont, 'Segoe UI',
+	/* font-family: "Press Start 2P", -apple-system, BlinkMacSystemFont, 'Segoe UI',
 		Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-		'Segoe UI Symbol';
+		'Segoe UI Symbol'; */
 	font-size: 12px;
 	color: #1a1a1a;
 	background-color: var(--primary);
@@ -425,6 +439,10 @@ form {
 	width: 100%;
 }
 
+.test {
+	background-color: #33323b !important;
+}
+
 form .form-group {
 	display: block;
 	width: 100%;
@@ -475,44 +493,6 @@ form [type='radio'] {
 label form [type='checkbox'],
 label form [type='radio'] {
 	display: inline-block;
-}
-
-/* MODAL */
-.dialog-backdrop {
-	position: fixed;
-	inset: 0;
-	background-color: rgba(0, 0, 0, 0.3);
-}
-
-.dialog-container {
-	position: fixed;
-	inset: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 1rem;
-}
-
-.dialog-panel {
-	width: 65vw; /* equivalent to max-w-lg */
-	border: 1px solid #ddd; /* border color */
-	background-color: #fff; /* background color */
-	/* padding: 3rem; */
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* optional shadow */
-	border-radius: 0.5rem; /* optional border radius */
-}
-
-.dialog-title {
-	font-weight: bold;
-}
-
-.dialog-description {
-	margin-bottom: 1rem; /* space below the description */
-}
-
-.dialog-actions {
-	display: flex;
-	gap: 1rem;
 }
 
 
@@ -628,9 +608,9 @@ label form [type='radio'] {
 	background-color: #31a9e1;
 }
 
-h1 {
+/* h1 {
 	font-size: 2.25rem;
-}
+} */
 
 h2 {
 	font-size: 2rem;
