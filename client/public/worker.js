@@ -5,11 +5,15 @@ console.log('Worker started!')
       const testResults = []
       const userOutput = []
       const { codeToRun, answers, codeTests } = data
+
       let status = true
       for (i = 0; i < codeTests.length; i++) {
+        console.log(answers, `${codeToRun}  
+          ${codeTests[i]}`)
         const result = eval(`${codeToRun}  
           ${codeTests[i]}`)
-        if (result == answers[i]){
+          console.log('result:', JSON.stringify(result).replaceAll(' ', ''), 'answer:',answers[i].replaceAll(' ', ''))
+        if (JSON.stringify(result).replaceAll(' ', '') == answers[i].replaceAll(' ', '')){
           testResults.push(true)
         } else {
           testResults.push(false)
