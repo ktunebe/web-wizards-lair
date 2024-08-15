@@ -11,7 +11,7 @@ const Header = () => {
     <header className="bg-neutral-900  mb-4 py-3 flex align-center">
       <div className="container flex justify-between align-center text-center">
         <Link className="text-light" to="/">
-          <h1 className="m-0" style={{ fontSize: '2rem' }}>
+          <h1 className="m-0 font-bold text-8xl font-pressStart" style={{ fontSize: '2rem', color: '#95A3A4' }}>
             Project 3
           </h1>
         </Link>
