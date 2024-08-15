@@ -21,7 +21,7 @@
   },
   {
     "instructions": "Write code to return an array with all numbers from 'num' to 0",
-    "starterCode": "const countdown = () => {\n //Don't edit above this line. \n\n\n //Don't edit below this line. \n}",
+    "starterCode": "const countdown = (num) => {\n //Don't edit above this line. \n\n\n //Don't edit below this line. \n}",
     "answers": [ "[3,2,1,0]", "[ 7,6,5,4,3,2,1,0 ]"  ],
     "tests": [ "countdown(3)", "countdown(7)" ],
     "solution": "const countdown = (num) => {\nconst countDownArray = [] for (let i = num: i >= 0; i--) {\n countDownArray.push(i)\n}\n return countDownArray \n}",
