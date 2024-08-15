@@ -7,6 +7,7 @@ import {
 	TabPanels,
 	Dialog,
 	DialogPanel,
+	DialogBackdrop,
 	Button,
 } from '@headlessui/react'
 
@@ -27,27 +28,34 @@ const LoginModal = () => {
 				open={isOpen}
 				onClose={() => setIsOpen(false)}
 				className="relative z-50">
-				<div className="fixed inset-0 flex w-screen items-start pt-[20%] justify-center p-4 overflow-y-auto backdrop-blur-sm">
-					<DialogPanel className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 space-y-4">
-						<TabGroup className="w-full">
-							<TabList className="flex flex-wrap justify-evenly ">
-								<Tab className="w-1/3 bg-danger mx-2 text-white bg-lannisterGold py-2 data-[selected]:bg-lannisterRed data-[selected]:border-2 data-[hover]:underline">
-									Log In
-								</Tab>
-								<Tab className="w-1/3 bg-danger mx-2 text-white bg-lannisterGold py-2 data-[selected]:bg-lannisterRed data-[selected]:border-2 data-[hover]:underline">
-									Sign Up
-								</Tab>
-							</TabList>
-							<TabPanels className="">
-								<TabPanel className="">
-									<Login isOpen={isOpen} setIsOpen={setIsOpen} />
-								</TabPanel>
-								<TabPanel>
-									<Signup className="" isOpen={isOpen} setIsOpen={setIsOpen} />
-								</TabPanel>
-							</TabPanels>
-						</TabGroup>
-					</DialogPanel>
+				<DialogBackdrop className="fixed inset-0 backdrop-blur-sm" />
+				<div className="fixed inset-0 w-screen overflow-y-auto p-4">
+					<div className="flex min-h-full items-center justify-center">
+						<DialogPanel className="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 space-y-4">
+							<TabGroup className="w-full">
+								<TabList className="flex flex-wrap justify-evenly ">
+									<Tab className="w-1/3 bg-danger mx-2 text-white bg-lannisterGold py-2 data-[selected]:bg-lannisterRed data-[selected]:border-2 data-[hover]:underline">
+										Log In
+									</Tab>
+									<Tab className="w-1/3 bg-danger mx-2 text-white bg-lannisterGold py-2 data-[selected]:bg-lannisterRed data-[selected]:border-2 data-[hover]:underline">
+										Sign Up
+									</Tab>
+								</TabList>
+								<TabPanels className="">
+									<TabPanel className="">
+										<Login isOpen={isOpen} setIsOpen={setIsOpen} />
+									</TabPanel>
+									<TabPanel>
+										<Signup
+											className=""
+											isOpen={isOpen}
+											setIsOpen={setIsOpen}
+										/>
+									</TabPanel>
+								</TabPanels>
+							</TabGroup>
+						</DialogPanel>
+					</div>
 				</div>
 			</Dialog>
 			{/* <Dialog

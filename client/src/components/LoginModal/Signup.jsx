@@ -78,6 +78,20 @@ const Signup = ({ isOpen, setIsOpen }) => {
 							<form onSubmit={handleFormSubmit} className="bg-lannisterRed text-white border-4">
 								<div className="w-full py-4 px-12">
 								<Field className="py-4">
+									<Label className="text-sm/6 font-medium text-white">Username</Label>
+									<Input
+										placeholder="Your email"
+										name="username"
+										type="username"
+										value={formState.username}
+										onChange={handleChange}
+										className={clsx(
+											'bg-jet text-white block w-full rounded border-neutral-200 border-2 py-1.5 px-3 text-sm/6',
+											'placeholder:text-white focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25'
+										)}
+									/>
+								</Field>
+								<Field className="py-4">
 									<Label className="text-sm/6 font-medium text-white">Email</Label>
 									<Input
 										placeholder="Your email"
