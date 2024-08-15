@@ -28,19 +28,22 @@ const userSchema = new Schema({
     required: true,
     default: 1
   },
-  solutions: [
-    new Schema({
-      problem: {
-        type: Schema.Types.ObjectId,
-        ref: 'Problem',
-        required: true
-      },
-      solution: {
-        type: String,
-        required: true
-      }
-    })
-  ]
+  solutions: {
+    type: [
+      new Schema({
+        problem: {
+          type: Schema.Types.ObjectId,
+          ref: 'Problem',
+          required: true
+        },
+        solution: {
+          type: String,
+          required: true
+        }
+      })
+    ],
+    default: []
+  }
 });
 
 // set up pre-save middleware to create password

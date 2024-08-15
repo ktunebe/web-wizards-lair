@@ -10,13 +10,7 @@ import codeRunner from '../../web-worker/codeRunner'
 
 import './styles.css'
 
-// const starterCode = `const add = (num1, num2) => {
-// //Do not touch above this line
 
-// //Do not touch below this line
-// }`
-// const tests = ['add(2,4)', 'add(55,110)']
-// const answers = [6, 165]
 
 const CodeEditor = () => {
 	const [isOpen, setIsOpen] = useState(false)
@@ -24,7 +18,6 @@ const CodeEditor = () => {
 	const [answerStatus, setAnswerStatus] = useState(false)
 	const { loading, error, data } = useQuery(GET_PROBLEM)
 	const problem = data?.problem || {}
-
 	const { data: userData } = useQuery(QUERY_ME)
 	const user = userData?.me || {};
 	const [tierUp] = useMutation(TIER_UP)
@@ -55,16 +48,15 @@ const CodeEditor = () => {
 	}
 
 	const finishedEval = async (testResults, userOutput, status, userAnswer) => {
-		console.log(problem._id, problem.answers, status, userAnswer)
-
 		if (status) {
 			await tierUp({
 				variables: {
 					solution: { problem: problem._id, solution: userAnswer },
 				},
-				refetchQueries: [ GET_PROBLEM, "problem"  ]
+				// refetchQueries: [ GET_PROBLEM, "problem"  ]
 			})
 		}
+
 		setAnswerStatus(status)
 		setTestResultsArray(testResults)
 	}

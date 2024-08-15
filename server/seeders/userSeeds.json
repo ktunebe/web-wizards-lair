@@ -5,7 +5,7 @@
     "password": "password01",
     "avatar": "t",
     "score": 1,
-    "solutions": null
+    "solutions": []
   },
   {
     "username": "Max Kanat-Alexander",
@@ -13,7 +13,7 @@
     "password": "password02",
     "avatar": "t",
     "score": 1,
-    "solutions": null
+    "solutions": []
   },
   {
     "username": "Amiko",
@@ -21,7 +21,7 @@
     "password": "password03",
     "avatar": "t",
     "score": 1,
-    "solutions": null
+    "solutions": []
   },
   {
     "username": "Kent Beck",
@@ -29,7 +29,7 @@
     "password": "password04",
     "avatar": "t",
     "score": 1,
-    "solutions": null
+    "solutions": []
   },
   {
     "username": "Edward V. Berard",
@@ -37,7 +37,7 @@
     "password": "password05",
     "avatar": "t",
     "score": 1,
-    "solutions": null
+    "solutions": []
   },
   {
     "username": "Alan Kay",
@@ -45,7 +45,7 @@
     "password": "password06",
     "avatar": "t",
     "score": 1,
-    "solutions": null
+    "solutions": []
   },
   {
     "username": "C.A.R. Hoare",
@@ -53,7 +53,7 @@
     "password": "password07",
     "avatar": "t",
     "score": 1,
-    "solutions": null
+    "solutions": []
   },
   {
     "username": "David Thomas",
@@ -61,7 +61,7 @@
     "password": "password08",
     "avatar": "t",
     "score": 1,
-    "solutions": null
+    "solutions": []
   },
   {
     "username": "Donald Knuth",
@@ -69,7 +69,7 @@
     "password": "password09",
     "avatar": "t",
     "score": 1,
-    "solutions": null
+    "solutions": []
   },
   {
     "username": "Lernantino",
@@ -77,6 +77,6 @@
     "password": "password10",
     "avatar": "t",
     "score": 1,
-    "solutions": null
+    "solutions": []
   }
 ]
