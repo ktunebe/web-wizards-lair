@@ -4,6 +4,7 @@ import Auth from '../utils/auth'
 import LoginModal from '../components/LoginModal'
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
+import { Button } from '@headlessui/react'
 const doorStyles = {
 	backgroundColor: 'black',
 	borderRadius: '10px',
@@ -33,7 +34,7 @@ const Home = () => {
 		}, 4000)
 		setTimeout(() => {
 			navigate('/editor-sandbox')
-		}, 10000)
+		}, 9000)
 	}
 
 	// Flame flicker interval
@@ -52,7 +53,7 @@ const Home = () => {
 
 	return (
 		<>
-			<div className="container flex flex-col justify-between text-center font-pressStart" style={{color: '#95A3A4'}}>
+			<div className="container flex flex-col justify-between text-center font-pressStart">
 				<h2 className="">Welcome to the Web Wizard's Lair</h2>
 				<p className="">
 				Greetings, Wayward Traveler, <br/><br/>
@@ -87,13 +88,11 @@ Tread carefully, and may your code ever be free of maledictions.
 						// Only show avatar once logged in
 						<img
 							src={user.avatar}
-							className='w-3/4'
+							className='w-3/4 transition-all duration-[4s]'
 							style={{
 								transition: 'all 4s',
 								transform: gameStarted ? 'translateX(150%)' : '',
 								zIndex: 5,
-								// maxWidth: '100%',
-								// maxHeight: '75%',
 							}}
 						/>
 					) : (
@@ -108,11 +107,13 @@ Tread carefully, and may your code ever be free of maledictions.
 						<LoginModal />
 					) : !gameStarted ? (
 						// Logged in but game not started = start game button,
-						<button
-							onClick={handleStartGame}
-							className={'btn btn-danger text-dark font-bold absolute-middle'}>
-							Enter the Dungeon
-						</button>
+
+											<Button 
+											className="absolute-middle rounded bg-lannisterRed py-2 px-4 text-sm border-2 border-lannisterGold text-lannisterGold data-[hover]:bg-jet data-[hover]:text-lannisterRed data-[hover]:border-lannisterRed transition-colors ease-in-out duration-500"
+											onClick={handleStartGame}
+										>
+											Enter the Dungeon
+										</Button>
 					) : (
 						//  Logged in and game started = Josh, but invisible until door opens
 						<img
