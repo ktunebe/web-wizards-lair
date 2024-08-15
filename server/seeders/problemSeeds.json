@@ -2,7 +2,7 @@
   {
     "instructions": "`add` returns the result of `num1` plus `num2`.",
     "starterCode": "const add = (num1, num2) => {\n//Don't edit above this line.  \n\n\n  //Don't edit below this line. \n}",
-    "answers": [ 5, 150 ],
+    "answers": [ "5", "150" ],
     "tests": [ "add(3,2)", "add(100,50)" ],
     "solution": "var add = function(num1, num2) {\n\treturn num1 + num2\n}",
     "tier": 1,
@@ -10,24 +10,24 @@
     "title": "The first hurdle"
   },
   {
-    "instructions": "`add` returns the result of `num1` plus `num2`.",
-    "starterCode": "const add = (num1, num2) => {\n//Don't edit above this line.  \n\n\n  //Don't edit below this line. \n}",
-    "answers": [ 5, 150 ],
-    "tests": [ "add(3,2)", "add(100,50)" ],
-    "solution": "var add = function(num1, num2) {\n\treturn num1 + num2\n}",
+    "instructions": "In this activity you will be writing code to create a function that returns an arrary of even numbers from 0 to a given number.",
+    "starterCode": "const logEvenNums = (num) => {\n //Don't edit above this line.  \n\n\n //Don't edit below this line. \n}",
+    "answers": [ "[ 2 ]", "[ 2, 4, 6, 8, 10, 12 ]" ],
+    "tests": [ "logEvenNums(3)", "logEvenNums(13)" ],
+    "solution": "const logEvenNums = (num) => { \nfor (let i = 0; i <= num; i++) {\n let numArray = []\n if (i % 2 === 0) {\nnumArray.push(i)\n}\n}\n} ",
     "tier": 2,
-    "lore": "Your first task on the road to staying alive,\nIs showing that two plus three equals five.\nBut I'll be impressed if your function predicts,\nTwo hundred and twelve plus three hundred and six.",
-    "title": "The second hurdle"
+    "lore": "Placeholder",
+    "title": "Double Trouble"
   },
   {
-    "instructions": "`add` returns the result of `num1` plus `num2`.",
-    "starterCode": "const add = (num1, num2) => {\n//Don't edit above this line.  \n\n\n  //Don't edit below this line. \n}",
-    "answers": [ 5, 150 ],
-    "tests": [ "add(3,2)", "add(100,50)" ],
-    "solution": "var add = function(num1, num2) {\n\treturn num1 + num2\n}",
+    "instructions": "Write code to return an array with all numbers from 'num' to 0",
+    "starterCode": "const countdown = (num) => {\n //Don't edit above this line. \n\n\n //Don't edit below this line. \n}",
+    "answers": [ "[3,2,1,0]", "[ 7,6,5,4,3,2,1,0 ]"  ],
+    "tests": [ "countdown(3)", "countdown(7)" ],
+    "solution": "const countdown = (num) => {\nconst countDownArray = [] for (let i = num: i >= 0; i--) {\n countDownArray.push(i)\n}\n return countDownArray \n}",
     "tier": 3,
-    "lore": "Your first task on the road to staying alive,\nIs showing that two plus three equals five.\nBut I'll be impressed if your function predicts,\nTwo hundred and twelve plus three hundred and six.",
-    "title": "The third hurdle"
+    "lore": "Placeholderq",
+    "title": "Third Times the Charm?"
   }
 
 ]

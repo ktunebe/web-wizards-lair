@@ -20,7 +20,8 @@ const CodeEditor = () => {
 	const [testResultsArray, setTestResultsArray] = useState([])
 	const [answerStatus, setAnswerStatus] = useState(false)
 	const { loading, error, data } = useQuery(GET_PROBLEM)
-	console.log(data)
+	const problem = data?.problem || {}
+	console.log(data, loading)
 	const [tierUp] = useMutation(TIER_UP)
 	// useRef is a react hook similar to useState. Difference is all it holds is a reference to an element on the page
 	const editorRef = useRef(null)
@@ -44,18 +45,19 @@ const CodeEditor = () => {
 
 	const runCode = () => {
 		let value = getEditorCode()
-		codeRunner(value, data.problem.tests, data.problem.answers, finishedEval)
+		codeRunner(value, problem.tests, problem.answers, finishedEval)
 		setIsOpen(true)
 	}
 
 	const finishedEval = async (testResults, userOutput, status, userAnswer) => {
-		console.log(data.problem._id, data.problem.answers, status, userAnswer)
+		console.log(problem._id, problem.answers, status, userAnswer)
 
 		if (status) {
 			await tierUp({
 				variables: {
-					solution: { problem: data.problem._id, solution: userAnswer },
+					solution: { problem: problem._id, solution: userAnswer },
 				},
+				refetchQueries: [ GET_PROBLEM, "problem"  ]
 			})
 		}
 		setAnswerStatus(status)
@@ -68,24 +70,26 @@ const CodeEditor = () => {
 
 	return (
 		<>
-			<PassFailModal
-				data={data}
-				isOpen={isOpen}
-				setIsOpen={setIsOpen}
-				testResultsArray={testResultsArray}
-				setTestResultsArray={setTestResultsArray}
-				answerStatus={answerStatus}
-				setAnswerStatus={setAnswerStatus}
-			/>
+			{data?.problem && (
+							<PassFailModal
+							data={data}
+							isOpen={isOpen}
+							setIsOpen={setIsOpen}
+							testResultsArray={testResultsArray}
+							setTestResultsArray={setTestResultsArray}
+							answerStatus={answerStatus}
+							setAnswerStatus={setAnswerStatus}
+						/>
+			)}
 			<p
 				style={{ whiteSpace: 'pre-line' }}
 				className="text-white py-4 text-center">
-				{data.problem?.lore}
+				{problem?.lore}
 			</p>
 			<Editor
 				height="500px"
 				defaultLanguage="javascript"
-				defaultValue={data?.problem.starterCode}
+				defaultValue={problem?.starterCode}
 				onMount={handleEditorDidMount}
 				onChange={handleEditorChange}
 				theme="vs-dark"
