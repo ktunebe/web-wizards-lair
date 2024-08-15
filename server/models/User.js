@@ -26,7 +26,7 @@ const userSchema = new Schema({
   score: {
     type: Number,
     required: true,
-    default: 0
+    default: 1
   },
   solutions: [
     new Schema({

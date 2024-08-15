@@ -42,8 +42,8 @@ const Profile = () => {
   const userProgress = (user.score / 10 ) * 100
 
   return (
-    <div className='nes-container with-title is-dark is-centered'>
-    <p className="title nes-text" style={{ fontSize: '2rem' }}>{user.username}</p>
+    <div className='nes-container with-title text-jet is-centered'>
+    <p className="title nes-text test" style={{ fontSize: '2rem' }}>{user.username}</p>
       <div>
         <div className='flex space-x-16 justify-center items-center'>
           <img className='nes-container is-rounded flex-col' src={tempAvatar}></img> 

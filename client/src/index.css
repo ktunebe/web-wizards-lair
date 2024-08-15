@@ -359,16 +359,28 @@ body {
 }
 
 :root {
-	--secondary: rgb(24, 22, 27);
-	--primary: rgb(51, 50, 59);
+	--color-light-gray: #95A3A4;
+	--color-jet: #33323b;
+	--color-lannister-red: #86090A;
+	--color-lannister-gold: #C2AD77;
+}
+
+@font-face {
+  font-family: 'pokemon';
+  src: url('../src/assets/fonts/PokemonGb-RAeo.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'pressStart';
+  src: url('../src/assets/fonts/PressStart2P-Regular.ttf') format('truetype');
 }
 
 body {
 	margin: 0;
 	padding: 0;
-	font-family: "Press Start 2P", -apple-system, BlinkMacSystemFont, 'Segoe UI',
+	/* font-family: "Press Start 2P", -apple-system, BlinkMacSystemFont, 'Segoe UI',
 		Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-		'Segoe UI Symbol';
+		'Segoe UI Symbol'; */
 	font-size: 12px;
 	color: #1a1a1a;
 	background-color: var(--primary);
@@ -421,99 +433,24 @@ h6 {
 	transform: translate(-50%, -50%);
 }
 
-form {
-	width: 100%;
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid #253341;
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px #C2AD77 inset;
+  box-shadow: 0 0 0px 500px  #C2AD77 inset;
+  color: white;
 }
 
-form .form-group {
-	display: block;
-	width: 100%;
-	margin: 0.625rem 0;
-}
 
-form .form-input,
-form .form-textarea {
-	display: block;
-}
-
-form select {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
-	background-repeat: no-repeat;
-	background-position-x: 98%;
-	background-position-y: 50%;
-}
-
-form label,
-form .form-label {
-	display: inline-block;
-	font-size: 1.2rem;
-	margin: 0.625rem 0 0.25rem 0.3rem;
-}
-
-form .form-input {
-	width: 100%;
-	padding: 0.75rem;
-	color: #1a1a1a;
-	background-color: #ffffff;
-	margin: 0.625rem 0;
-	font-size: 1.2rem;
-	border: 1px solid #484848;
-	border-radius: 0.3rem;
-}
-
-form .form-input.form-input-squared {
-	border-radius: 0;
-}
-
-form [type='checkbox'],
-form [type='radio'] {
-	display: inline-block;
-}
-
-label form [type='checkbox'],
-label form [type='radio'] {
-	display: inline-block;
-}
-
-/* MODAL */
-.dialog-backdrop {
-	position: fixed;
-	inset: 0;
-	background-color: rgba(0, 0, 0, 0.3);
-}
-
-.dialog-container {
-	position: fixed;
-	inset: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 1rem;
-}
-
-.dialog-panel {
-	width: 65vw; /* equivalent to max-w-lg */
-	border: 1px solid #ddd; /* border color */
-	background-color: #fff; /* background color */
-	/* padding: 3rem; */
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* optional shadow */
-	border-radius: 0.5rem; /* optional border radius */
-}
-
-.dialog-title {
-	font-weight: bold;
-}
-
-.dialog-description {
-	margin-bottom: 1rem; /* space below the description */
-}
-
-.dialog-actions {
-	display: flex;
-	gap: 1rem;
-}
 
 
 .btn {
@@ -628,9 +565,9 @@ label form [type='radio'] {
 	background-color: #31a9e1;
 }
 
-h1 {
+/* h1 {
 	font-size: 2.25rem;
-}
+} */
 
 h2 {
 	font-size: 2rem;

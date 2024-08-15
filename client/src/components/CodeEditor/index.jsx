@@ -23,12 +23,10 @@ const CodeEditor = () => {
 	const [testResultsArray, setTestResultsArray] = useState([])
 	const [answerStatus, setAnswerStatus] = useState(false)
 	const { loading, error, data } = useQuery(GET_PROBLEM)
+	const problem = data?.problem || {}
+
 	const { data: userData } = useQuery(QUERY_ME)
-
-
 	const user = userData?.me || {};
-	const tempAvatar = '/avatar-images/shadow-mage-f.png'
-
 	const [tierUp] = useMutation(TIER_UP)
 	// useRef is a react hook similar to useState. Difference is all it holds is a reference to an element on the page
 	const editorRef = useRef(null)
@@ -52,18 +50,19 @@ const CodeEditor = () => {
 
 	const runCode = () => {
 		let value = getEditorCode()
-		codeRunner(value, data.problem.tests, data.problem.answers, finishedEval)
+		codeRunner(value, problem.tests, problem.answers, finishedEval)
 		setIsOpen(true)
 	}
 
 	const finishedEval = async (testResults, userOutput, status, userAnswer) => {
-		console.log(data.problem._id, data.problem.answers, status, userAnswer)
+		console.log(problem._id, problem.answers, status, userAnswer)
 
 		if (status) {
 			await tierUp({
 				variables: {
-					solution: { problem: data.problem._id, solution: userAnswer },
+					solution: { problem: problem._id, solution: userAnswer },
 				},
+				refetchQueries: [ GET_PROBLEM, "problem"  ]
 			})
 		}
 		setAnswerStatus(status)
@@ -76,15 +75,17 @@ const CodeEditor = () => {
 
 	return (
 		<>
-			<PassFailModal
-				data={data}
-				isOpen={isOpen}
-				setIsOpen={setIsOpen}
-				testResultsArray={testResultsArray}
-				setTestResultsArray={setTestResultsArray}
-				answerStatus={answerStatus}
-				setAnswerStatus={setAnswerStatus}
-			/>
+			{data?.problem && (
+							<PassFailModal
+							data={data}
+							isOpen={isOpen}
+							setIsOpen={setIsOpen}
+							testResultsArray={testResultsArray}
+							setTestResultsArray={setTestResultsArray}
+							answerStatus={answerStatus}
+							setAnswerStatus={setAnswerStatus}
+						/>
+			)}
 
 			<div className='flex flex-row w-full md:w-3/4 justify-between flex-wrap md:flex-nowrap'>
 
@@ -107,7 +108,7 @@ const CodeEditor = () => {
 				<p
 					style={{ whiteSpace: 'pre-line' }}
 					className="text-black py-4 text-center nes-balloon from-left w-full md:w-1/2">
-					{data.problem?.lore}
+					{problem?.lore}
 				</p>
 			</div>
 				<div className="flex justify-center" style={{ margin: '16px' }}>
@@ -117,7 +118,7 @@ const CodeEditor = () => {
 				</div>
 				<img 
 					className='avatar-style' 
-					src={tempAvatar} 
+					src={user.avatar} 
 					
 				/>
 		</>

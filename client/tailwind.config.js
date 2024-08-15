@@ -5,7 +5,18 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        jet: "var(--color-jet)",
+        lannisterRed: "var(--color-lannister-red)",
+        lannisterGold: "var(--color-lannister-gold)",
+        lightGray: "var(--color-light-gray)",
+      },
+      fontFamily: {
+				pokemon: ["pokemon", "sans-serif"],
+        pressStart: ["pressStart", "monospace"]
+			},
+    },
   },
   plugins: [],
 }
