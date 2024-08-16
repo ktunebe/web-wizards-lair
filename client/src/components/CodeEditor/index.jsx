@@ -16,6 +16,7 @@ const CodeEditor = () => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [testResultsArray, setTestResultsArray] = useState([])
 	const [answerStatus, setAnswerStatus] = useState(false)
+	const [userOutputArray, setUserOutputArray] = useState(false)
 	const { loading, error, data } = useQuery(GET_PROBLEM)
 	const problem = data?.problem || {}
 	const { data: userData } = useQuery(QUERY_ME)
@@ -59,6 +60,7 @@ const CodeEditor = () => {
 
 		setAnswerStatus(status)
 		setTestResultsArray(testResults)
+		setUserOutputArray(userOutput)
 	}
 
 	if (loading) {
@@ -74,6 +76,8 @@ const CodeEditor = () => {
 							setIsOpen={setIsOpen}
 							testResultsArray={testResultsArray}
 							setTestResultsArray={setTestResultsArray}
+							userOutputArray={userOutputArray}
+							setUserOutputArray={setUserOutputArray}
 							answerStatus={answerStatus}
 							setAnswerStatus={setAnswerStatus}
 						/>

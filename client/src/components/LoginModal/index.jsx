@@ -26,7 +26,7 @@ const LoginModal = () => {
 			</Button>
 			<Dialog
 				open={isOpen}
-				onClose={() => setIsOpen(false)}
+				onClose={() => {}}
 				className="relative z-50">
 				<DialogBackdrop className="fixed inset-0 backdrop-blur-sm" />
 				<div className="fixed inset-0 w-screen overflow-y-auto p-4">

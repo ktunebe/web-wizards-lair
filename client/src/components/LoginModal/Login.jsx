@@ -58,8 +58,8 @@ const Login = ({ isOpen, setIsOpen }) => {
 						value={formState.email}
 						onChange={handleChange}
 						className={clsx(
-							'bg-lannisterGold text-white block w-full rounded border-neutral-200 border-2 py-1.5 px-3 text-sm/6',
-							'placeholder:text-jet focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25'
+							'bg-jet text-white block w-full rounded border-neutral-200 border-2 py-1.5 px-3 text-sm/6',
+							'placeholder:text-lightGray focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25'
 						)}
 					/>
 				</Field>
@@ -79,7 +79,7 @@ const Login = ({ isOpen, setIsOpen }) => {
 				</Field>
 				<div className="flex flex-wrap justify-center lg:justify-end gap-4 my-6">
 					<Button 
-						className="rounded bg-lannisterGold py-2 px-4 text-sm border-2 text-white data-[hover]:bg-lannisterRed data-[active]:bg-jet"
+						className="rounded bg-lannisterGold py-2 px-4 text-sm border-2 text-white data-[hover]:bg-jet data-[active]:bg-jet"
 						type="submit"
 					>
 						Submit
