@@ -97,11 +97,11 @@ const CodeEditor = () => {
 						theme="vs-dark"
 					/>
 				</div>
-				<p
-					style={{ whiteSpace: 'pre-line' }}
-					className="text-black py-4 text-center nes-balloon from-left w-full md:w-1/2">
-					{problem?.lore}
-				</p>
+					<p
+						style={{ whiteSpace: 'pre-line' }}
+						className="text-black py-16 px-16 text-center w-full md:w-1/2">
+						{problem?.lore}
+					</p>
 			</div>
 				<div className="flex justify-center" style={{ margin: '16px' }}>
 					<button className="btn" onClick={runCode}>
