@@ -15,6 +15,12 @@ const PassFailModal = ({
 	userOutputArray,
 	answerStatus,
 }) => {
+
+	const handlePass = () => {
+		setIsOpen(false)
+		window.location.reload()
+	}
+
 	return (
 		<Dialog
 			open={isOpen}
@@ -52,7 +58,7 @@ const PassFailModal = ({
 					</div>
 						<Button
 							className={`rounded ${answerStatus ? 'bg-green-800' : 'bg-lannisterRed'} py-2 px-4 text-sm border-2 text-white data-[hover]:bg-jet data-[active]:bg-jet`}
-							onClick={() => setIsOpen(false)}>
+							onClick={answerStatus ? handlePass : () => setIsOpen(false)}>
 							{`${answerStatus ? 'Continue' : 'Try Again'}`}
 						</Button>
 					</DialogPanel>

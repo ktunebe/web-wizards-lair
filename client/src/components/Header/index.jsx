@@ -14,7 +14,7 @@ const Header = () => {
 					<h1
 						className="m-0 font-bold text-8xl font-pressStart"
 						style={{ fontSize: '2rem', color: '#95A3A4' }}>
-						Project 3
+						The Web Wizard's Lair
 					</h1>
 				</Link>
 				<div className="flex flex-wrap justify-center gap-2">
