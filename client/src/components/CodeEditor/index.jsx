@@ -103,7 +103,7 @@ const CodeEditor = () => {
 				</div>
 					<p
 						style={{ whiteSpace: 'pre-line' }}
-						className="text-black py-16 px-16 text-center w-full md:w-1/2">
+						className="text-black py-16 px-16 text-center w-full md:w-1/2 scroll-img">
 						{problem?.lore}
 					</p>
 			</div>
