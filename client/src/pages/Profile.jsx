@@ -1,72 +1,92 @@
-import { Navigate, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { Navigate, useParams, useNavigate } from 'react-router-dom'
+import { useQuery } from '@apollo/client'
+import { Button } from '@headlessui/react'
 
-import { QUERY_SINGLE_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_SINGLE_USER, QUERY_ME, GET_ALL_PROBLEMS } from '../utils/queries'
 
-import Auth from '../utils/auth';
-import AuthCheck from '../utils/AuthCheck'
+import Auth from '../utils/auth'
+
 
 const Profile = () => {
-  const { userId } = useParams();
+  const { data: problemData, loading: problemLoading } = useQuery(GET_ALL_PROBLEMS)
+	const { userId } = useParams()
 
-  // If there is no `userId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
-  const { loading, data } = useQuery(
-    userId ? QUERY_SINGLE_USER : QUERY_ME,
-    {
-      variables: { userId },
-    }
-  );
+  const navigate = useNavigate()
 
-  
+	// If there is no `userId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
+	const { loading, data } = useQuery(userId ? QUERY_SINGLE_USER : QUERY_ME, {
+		variables: { userId },
+	})
 
-  // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_PROFILE` query
-  const user = data?.me || data?.user || {};
-  console.log(user.solutions)
-  
-  // Use React Router's `<Redirect />` component to redirect to personal user page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data._id === userId) {
-    return <Navigate to="/me" />;
-  }
+	// Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_PROFILE` query
+	const user = data?.me || data?.user || {}
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+	// Use React Router's `<Redirect />` component to redirect to personal user page if username is yours
+	if (Auth.loggedIn() && Auth.getProfile().data._id === userId) {
+		return <Navigate to="/me" />
+	}
 
-  if (!user?.username) {
-    return (
-      <h4>
-        You need to be logged in to see your user page. Use the navigation
-        links above to sign up or log in!
-      </h4>
-    );
-  }
+	if (loading || problemLoading) {
+		return <div>Loading...</div>
+	}
 
-  const userProgress = (user.score / 10 ) * 100
+	if (!user?.username) {
+		return (
+			<h4>
+				You need to be logged in to see your user page. Use the navigation links
+				above to sign up or log in!
+			</h4>
+		)
+	}
 
-  return (
-    <div className='container nes-container with-title text-white is-centered'>
-    <p className="title nes-text !bg-jet " style={{ fontSize: '2rem' }}>{user.username}</p>
-        <div className='flex gap-4 justify-center items-center'>
-          <img className='nes-container is-rounded w-1/2' src={user.avatar}></img> 
-          <div className='flex flex-col w-1/2'>
-            <h2 className='py-2 text-base sm:text-xl md:text-2xl'>Dungeon Levels Conquered: {user.score}</h2>
-            <progress className="nes-progress is-success" value={userProgress} max="100"></progress>
+	const userProgress = (user.score - 1)
+  const totalProblems = problemData.problems.length
+
+	return (
+    <div>
+		<div className="container nes-container with-title text-white is-centered">
+			<p className="title nes-text !bg-jet " style={{ fontSize: '2rem' }}>
+				{user.username}
+			</p>
+			<div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+				<img className="nes-container is-rounded w-1/2 sm:w-1/3" src={user.avatar}></img>
+				<div className="flex flex-col w-3/4 sm:w-2/3">
+					<h2 className="py-2 text-base sm:text-xl md:text-2xl">
+						Dungeon Levels Conquered: {userProgress}
+					</h2>
+					<progress
+						className="nes-progress is-success"
+						value={userProgress}
+						max={totalProblems}></progress>
+				</div>
+			</div>
+			<div>
+        <h2 className='text-3xl underline mt-6 flex items-center justify-center gap-4'> 
+          <i className="nes-icon trophy is-medium"></i>
+            Solutions
+          <i className="nes-icon trophy is-medium"></i>
+        </h2>
+				<ul className="py-6">
+					{user.solutions?.map((solution, index) => {
+						return (
+							<li key={index} className="py-4">
+								<h3 className="text-xl sm:text-2xl">
+									{solution.problem.title}
+								</h3>
+								<p className="sm:text-base py-4">{solution.solution}</p>
+							</li>
+						)
+					})}
+				</ul>
+			</div>
+		</div>
+					<div className='text-center py-6'>
+            <Button className="rounded bg-lannisterGold py-2 px-4 text-sm border-2 text-white data-[hover]:bg-jet data-[active]:bg-jet" onClick={() => navigate('/editor-sandbox')}>
+              &larr; Back to Current Level
+            </Button>
           </div>
-        </div>
-      <div> 
-        <ul className='pt-8'>
-        {user.solutions?.map(solution => {
-          return (
-            <li className='py-4'>
-              <h3 className='text-xl sm:text-2xl'>{solution.problem.title}</h3>
-              <p className='sm:text-base py-4'>{solution.solution}</p>
-            </li>
-          )
-        })}
-        </ul>
-      </div>
     </div>
-  );
-};
+	)
+}
 
-export default Profile;
+export default Profile

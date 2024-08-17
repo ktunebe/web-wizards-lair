@@ -404,28 +404,6 @@ h6 {
 	line-height: 1.25;
 }
 
-.outer-flame {
-	height: 20px;
-	width: 20px;
-	border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
-}
-
-.inner-flame {
-	height: 15px;
-	width: 15px;
-	border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
-	margin-top: 3px;
-	margin-left: 1px;
-}
-
-.sconce {
-	margin-top: -5px;
-	height: 30px;
-	width: 5px;
-	border-radius: 5px;
-	background-color: brown;
-}
-
 .absolute-middle {
 	position: absolute;
 	top: 50%;
