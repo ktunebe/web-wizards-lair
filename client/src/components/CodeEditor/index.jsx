@@ -3,6 +3,7 @@ import { useQuery, useMutation } from '@apollo/client'
 import { GET_PROBLEM } from '../../utils/queries'
 import { TIER_UP } from '../../utils/mutations'
 import { QUERY_ME } from '../../utils/queries'
+import { Button } from '@headlessui/react'
 
 import PassFailModal from './PassFailModal'
 import Editor from '@monaco-editor/react'
@@ -43,17 +44,22 @@ const CodeEditor = () => {
 	}
 
 	const runCode = () => {
-		let value = getEditorCode()
+		let untrimmedValue = getEditorCode()
+		console.log(untrimmedValue)
+		let value = untrimmedValue.replace("//Don't edit above this line.", '').replace("//Don't edit below this line.", '')
+		console.log(value)
 		codeRunner(value, problem.tests, problem.answers, finishedEval)
 		setIsOpen(true)
 	}
 
 	const finishedEval = async (testResults, userOutput, status, userAnswer) => {
 		if (status) {
+			console.log(userAnswer)
 			await tierUp({
 				variables: {
 					solution: { problem: problem._id, solution: userAnswer },
 				},
+
 				// refetchQueries: [ GET_PROBLEM, "problem"  ]
 			})
 		}
@@ -108,9 +114,9 @@ const CodeEditor = () => {
 					</p>
 			</div>
 				<div className="flex justify-center" style={{ margin: '16px' }}>
-					<button className="btn" onClick={runCode}>
+					<Button className="btn" onClick={runCode}>
 						Submit
-					</button>
+					</Button>
 				</div>
 				<img 
 					className='avatar-style' 
