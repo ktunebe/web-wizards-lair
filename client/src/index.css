@@ -423,8 +423,8 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   border: 1px solid #253341;
   -webkit-text-fill-color: white;
-  -webkit-box-shadow: 0 0 0px 1000px #C2AD77 inset;
-  box-shadow: 0 0 0px 500px  #C2AD77 inset;
+  -webkit-box-shadow: 0 0 0px 1000px #33323b inset;
+  box-shadow: 0 0 0px 500px  #33323b inset;
   color: white;
 }
 

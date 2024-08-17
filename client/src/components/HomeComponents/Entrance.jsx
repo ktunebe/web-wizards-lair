@@ -8,9 +8,13 @@ import Torch from './Torch'
 // intervalId to clear to avoid memory leak
 let intervalId
 
-
 const Entrance = ({ user }) => {
-  const [flameFlickers, setFlameFlickers] = useState({})
+	const navigate = useNavigate()
+	// Flame flicker state
+	const [flameFlickers, setFlameFlickers] = useState({})
+	// Door Open/Game Start state
+	const [gameStarted, setGameStarted] = useState(false)
+	const [doorOpened, setDoorOpened] = useState(false)
 	// Flame flicker interval
 	useEffect(() => {
 		clearInterval(intervalId)
@@ -25,86 +29,76 @@ const Entrance = ({ user }) => {
 		return () => clearInterval(intervalId)
 	}, [])
 
-	const [gameStarted, setGameStarted] = useState(false)
-	const [doorOpened, setDoorOpened] = useState(false)
-	const navigate = useNavigate()
-
 	// Start Game Handler
 	const handleStartGame = () => {
 		setGameStarted(true)
 		setTimeout(() => {
 			setDoorOpened(true)
-		}, 4000)
+		}, 3000)
 		setTimeout(() => {
 			navigate('/editor-sandbox')
 		}, 9000)
 	}
-  
-  return (
-    <>
-    	{/* Door/Torches/Avatar */}
-			<div className="mt-6 w-full max-w-screen-xl flex content-between justify-center">
-      {/* Left torch and avatar */}
-      <div className="flex flex-col w-1/6 justify-between">
-        <Torch flameFlickers={flameFlickers}/>
-        {Auth.loggedIn() ? (
-          // Only show avatar once logged in
-          <img
-            src={user.avatar}
-            className="w-3/4 transition-all duration-[4s]"
-            style={{
-              transition: 'all 4s',
-              transform: gameStarted ? 'translateX(150%)' : '',
-              zIndex: 5,
-            }}
-          />
-        ) : (
-          ''
-        )}
-      </div>
-      {/* Door Background - position: relative */}
-      <div className="relative h-full w-7/12 bg-black rounded-lg overflow-hidden">
-        {/* Nested ternary */}
-        {!Auth.loggedIn() ? (
-          // Not logged in = LoginModal,
-          <LoginModal />
-        ) : !gameStarted ? (
-          // Logged in but game not started = start game button,
 
-          <Button
-            className="absolute-middle rounded bg-lannisterRed py-2 px-4 text-sm border-2 border-lannisterGold text-lannisterGold data-[hover]:bg-jet data-[hover]:text-lannisterRed data-[hover]:border-lannisterRed transition-colors ease-in-out duration-500"
-            onClick={handleStartGame}>
-            Enter the Dungeon
-          </Button>
-        ) : (
-          //  Logged in and game started = Josh, but invisible until door opens
-          <img
-            src="/misc-images/archmage.png"
-            className="absolute-middle"
-            style={{
-              width: '40%',
-              transition: 'all 1.5s',
-              opacity: doorOpened ? '100%' : '0%',
-            }}
-          />
-        )}
-        <img
-          src="/misc-images/dungeon-gate-3.png"
-          style={{
-            width: '100%',
-            height: '100%',
-            transition: 'all 4s',
-            transform: doorOpened ? 'translateY(-100%)' : '',
-          }}
-        />
-      </div>
-      {/* Right torch */}
-      <div className="flex flex-col w-1/6 justify-between">
-      <Torch flameFlickers={flameFlickers}/>
-      </div>
-    </div>
-    </>
-  )
+	return (
+		<>
+			{/* Door/Torches/Avatar */}
+			<div className="mt-6 w-full max-w-screen-xl flex content-between justify-center">
+				{/* Left torch and avatar */}
+				<div className="flex flex-col w-1/6 justify-between">
+					<Torch flameFlickers={flameFlickers} />
+					{Auth.loggedIn() ? (
+						// Only show avatar once logged in
+						<img
+							src={user.avatar}
+							alt="user avatar image"
+							className={`w-3/4 transition-all duration-[3s] z-10 ${
+								gameStarted ? 'translate-x-[150%]' : ''
+							}`}
+						/>
+					) : (
+						''
+					)}
+				</div>
+				{/* Door Background - position: relative */}
+				<div className="relative h-full w-7/12 bg-black rounded-lg overflow-hidden">
+					{/* Nested ternary */}
+					{!Auth.loggedIn() ? (
+						// Not logged in = LoginModal,
+						<LoginModal />
+					) : !gameStarted ? (
+						// Logged in but game not started = start game button,
+
+						<Button
+							className="absolute-middle rounded bg-lannisterRed py-2 px-4 text-sm border-2 border-lannisterGold text-lannisterGold data-[hover]:bg-jet data-[hover]:text-lannisterRed data-[hover]:border-lannisterRed transition-colors ease-in-out duration-500"
+							onClick={handleStartGame}>
+							Enter the Dungeon
+						</Button>
+					) : (
+						//  Logged in and game started = Josh, but invisible until door opens
+						<img
+							src="/misc-images/archmage.png"
+							alt="image of arch-mage"
+							className={`absolute-middle w-2/5 transition-opacity duration-[3s] delay-[2s] ${
+								doorOpened ? 'opacity-100' : 'opacity-0'
+							}`}
+						/>
+					)}
+					<img
+						src="/misc-images/dungeon-gate-3.png"
+						alt="image of a dungeon gate"
+						className={`w-full h-full transition-all duration-[3s] ${
+							doorOpened ? '-translate-y-full' : ''
+						}`}
+					/>
+				</div>
+				{/* Right torch */}
+				<div className="flex flex-col w-1/6 justify-between">
+					<Torch flameFlickers={flameFlickers} />
+				</div>
+			</div>
+		</>
+	)
 }
 
 export default Entrance
