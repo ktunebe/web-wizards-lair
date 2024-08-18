@@ -7,7 +7,7 @@ import {
 	Button,
 } from '@headlessui/react'
 
-import { passedResponses, failedResponses } from './WizardDialog'
+
 
 const PassFailModal = ({
 	isOpen,
@@ -16,11 +16,9 @@ const PassFailModal = ({
 	testResultsArray,
 	userOutputArray,
 	answerStatus,
+	wizardDialog
 }) => {
 
-	const grabDialog = (array) => {
-		return array[Math.floor(Math.random() * array.length)]
-	}
 
 	const handlePass = () => {
 		setIsOpen(false)
@@ -38,6 +36,7 @@ const PassFailModal = ({
 						}`}</DialogTitle>
 						<Description className='text-white'>Test Results: </Description>
 						{data.problem.tests.map((test, index) => {
+							console.log(userOutputArray)
 							const answer = data.problem.answers[index]
 							const userOutput = userOutputArray[index]
 							const result = testResultsArray[index]
@@ -48,14 +47,14 @@ const PassFailModal = ({
 										className={`rounded p-1 ${
 											result ? 'bg-green-800' : 'bg-lannisterRed'
 										}`}>
-										Your output: {userOutput}
+										Your output: {userOutput == null ?  "You didn't return anything!" : JSON.stringify(userOutput)}
 									</p>
 								</div>
 							)
 						})}
 						<div className="flex flex-col">
 							<div className="nes-balloon from-right self-end">
-								<p className="self-start text-black">{answerStatus ? grabDialog(passedResponses) : grabDialog(failedResponses)}</p>
+								<p className="self-start text-black">{wizardDialog}</p>
 							</div>
 							<img className="self-end" src="misc-images/archmage.png" alt='image of arch-mage' />
 						</div>

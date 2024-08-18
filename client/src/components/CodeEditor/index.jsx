@@ -8,6 +8,7 @@ import { Button } from '@headlessui/react'
 import PassFailModal from './PassFailModal'
 import Editor from '@monaco-editor/react'
 import codeRunner from '../../web-worker/codeRunner'
+import { passedResponses, failedResponses } from './WizardDialog'
 
 import './styles.css'
 
@@ -23,6 +24,8 @@ const CodeEditor = () => {
 	const [tierUp] = useMutation(TIER_UP)
 	// useRef is a react hook similar to useState. Difference is all it holds is a reference to an element on the page
 	const editorRef = useRef(null)
+	// Dialog for wizard to respond based on right or wrong answer once code is run
+	const [wizardDialog, setWizardDialog] = useState('')
 
 	// State to store viewport height and width
 	const [viewportHeight, setViewportHeight] = useState(window.innerHeight)
@@ -58,13 +61,15 @@ const CodeEditor = () => {
 		return null
 	}
 
+	const grabDialog = (array) => {
+		return array[Math.floor(Math.random() * array.length)]
+	}
+
 	const runCode = () => {
 		let untrimmedValue = getEditorCode()
-		console.log(untrimmedValue)
 		let value = untrimmedValue
 			.replace("//Don't edit above this line.", '')
 			.replace("//Don't edit below this line.", '')
-		console.log(value)
 		codeRunner(value, problem.tests, problem.answers, finishedEval)
 		setIsOpen(true)
 	}
@@ -76,14 +81,13 @@ const CodeEditor = () => {
 				variables: {
 					solution: { problem: problem._id, solution: userAnswer },
 				},
-
 				// refetchQueries: [ GET_PROBLEM, "problem"  ]
 			})
-		}
-
+		} 
 		setAnswerStatus(status)
 		setTestResultsArray(testResults)
 		setUserOutputArray(userOutput)
+		status ? setWizardDialog(grabDialog(passedResponses)) : setWizardDialog(grabDialog(failedResponses))
 	}
 
 	if (loading) {
@@ -103,6 +107,7 @@ const CodeEditor = () => {
 					setUserOutputArray={setUserOutputArray}
 					answerStatus={answerStatus}
 					setAnswerStatus={setAnswerStatus}
+					wizardDialog={wizardDialog}
 				/>
 			)}
 
@@ -116,14 +121,16 @@ const CodeEditor = () => {
 						''
 					)}
 					<div className="flex flex-col justify-center items-center text-center min-h-64 h-1/2 md:h-full w-2/3 md:w-2/5 scroll-img whitespace-pre-line overflow-y-auto">
-						{viewportWidth < 768 || viewportHeight < 700 ? (
-							''
-						) : (
-							<p className="text-lannisterRed w-3/4 border-y border-lannisterRed leading-snug mb-1 xl:py-4">
-								{problem?.lore}
-							</p>
-						)}
-						<p className="text-black w-3/4 pt-2">{problem?.instructions}</p>
+						<div className='h-3/4 flex flex-col justify-evenly items-center'>
+							{viewportWidth < 768 || viewportHeight < 700 ? (
+								''
+							) : (
+								<p className="text-lannisterRed w-3/4 border-y border-lannisterRed leading-snug mb-1 xl:py-4">
+									{problem?.lore}
+								</p>
+							)}
+							<p className="text-black w-3/4 pt-2">{problem?.instructions}</p>
+						</div>
 					</div>
 					<div className="py-2 w-full md:w-3/5 h-full">
 						<Editor

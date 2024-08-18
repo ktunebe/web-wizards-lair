@@ -72,11 +72,11 @@ const Profile = () => {
 					<ul className="py-6">
 						{user.solutions?.map((solution, index) => {
 							return (
-								<li key={index} className="py-4 flex items-center border-y">
-									<h3 className="text-xl sm:text-2xl">
+								<li key={index} className="py-4 flex items-center  divide-x">
+									<h3 className="text-xl sm:text-2xl w-1/2">
 										{solution.problem.title}
 									</h3>
-									<p className="sm:text-base py-4 text-left whitespace-pre-wrap">
+									<p className="sm:text-base py-4 text-left w-1/2 px-4 whitespace-pre-wrap">
 										{solution.solution}
 									</p>
 								</li>

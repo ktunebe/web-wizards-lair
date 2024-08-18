@@ -11,7 +11,7 @@ console.log('Worker started!')
         const result = eval(`${codeToRun}  
           ${codeTests[zebra]}`)
 
-        if (JSON.stringify(result).replaceAll(' ', '') == answers[zebra].replaceAll(' ', '')){
+        if (result && JSON.stringify(result).replaceAll(' ', '') == answers[zebra].replaceAll(' ', '')){
           testResults.push(true)
         } else {
           testResults.push(false)
