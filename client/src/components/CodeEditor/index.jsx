@@ -5,11 +5,16 @@ import { TIER_UP } from '../../utils/mutations'
 import { QUERY_ME } from '../../utils/queries'
 import { Button } from '@headlessui/react'
 
+
 import PassFailModal from './PassFailModal'
 import Editor from '@monaco-editor/react'
+import Torch from '../HomeComponents/Torch'
 import codeRunner from '../../web-worker/codeRunner'
 
 import './styles.css'
+
+// intervalId to clear to avoid memory leak
+let intervalId
 
 const CodeEditor = () => {
 	const [isOpen, setIsOpen] = useState(false)
@@ -23,6 +28,23 @@ const CodeEditor = () => {
 	const [tierUp] = useMutation(TIER_UP)
 	// useRef is a react hook similar to useState. Difference is all it holds is a reference to an element on the page
 	const editorRef = useRef(null)
+
+	// Flame flicker state
+	const [flameFlickers, setFlameFlickers] = useState({})
+
+	// Flame flicker interval
+	useEffect(() => {
+		clearInterval(intervalId)
+		intervalId = setInterval(() => {
+			setFlameFlickers({
+				outerColorG: Math.floor(Math.random() * 90 + 160),
+				innerColorG: Math.floor(Math.random() * 90 + 50),
+				rotate: Math.floor(Math.random() * 8 - 45),
+				blur: Math.floor(Math.random() * 8 + 15),
+			})
+		}, 150)
+		return () => clearInterval(intervalId)
+	}, [])
 
 	// State to store viewport height and width
 	const [viewportHeight, setViewportHeight] = useState(window.innerHeight)
@@ -148,7 +170,17 @@ const CodeEditor = () => {
 					Submit
 				</Button>
 			</div>
-			<img className="avatar-style" src={user.avatar} alt="user avatar image" />
+			<div className="avatar-container">
+				<img 
+					src={user.avatar} alt="user avatar image"
+					className='avatar-style'
+				/>
+				<div className='torch-container'>
+					<Torch
+						flameFlickers={flameFlickers}
+					/>
+				</div>
+			</div>
 		</>
 	)
 }

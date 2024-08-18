@@ -6,16 +6,31 @@
 
 }
 
-.avatar-style {
+.avatar-container {
     position: fixed;
-    height: 80px;
-    width: auto;
     left: 16px;
-    bottom: 130px;
+    bottom: 75px;
+}
+
+.avatar-style {
+    height: 150px;
+    width: auto;
+}
+
+.torch-container {
+    position: absolute;
+    top: 0px;
+    right: 10px;
 }
 
 @media screen and (max-width: 640px) {
-    .avatar-style {
+    .avatar-container {
         bottom: 0px;
+        left: 0px;
+    }
+
+    .torch-container {
+        top: 24px;
+        right: 20px;
     }
 }
