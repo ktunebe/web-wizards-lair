@@ -21,6 +21,12 @@ body {
 	margin: 0;
 }
 
+.stone-background {
+	background-image: url('/misc-images/stone-background.jpg');
+	background-repeat: repeat;
+	background-size: 200px 200px;
+}
+
 /**
  * Render the `main` element consistently in IE.
  */

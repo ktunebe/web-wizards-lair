@@ -14,10 +14,12 @@ const Home = () => {
 	return (
 		<>
 			<div className="container flex flex-col justify-between text-center font-pressStart">
-				<h2 className="py-4 text-xl sm:text-2xl md:text-3xl">
+				<h2 className="py-4 text-xl sm:text-2xl md:text-3xl text-white"
+					style={{textShadow: '3px 3px 1px black'}}
+				>
 					Welcome to the Web Wizard's Lair
 				</h2>
-				<p className="py-4 sm:text-sm lg:text-base">
+				<p className="py-4 sm:text-sm lg:text-base text-white bg-black/65">
 					Greetings, Wayward Traveler, <br />
 					<br />
 					Welcome to the shadows of my domain, where the arcane and the digital

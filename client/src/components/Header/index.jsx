@@ -8,7 +8,7 @@ const Header = () => {
 		Auth.logout()
 	}
 	return (
-		<header className={`bg-neutral-900  mb-4 py-3 flex align-center justify-center`}>
+		<header className={`bg-neutral-900 py-3 flex align-center justify-center`}>
 			<div className={`container flex gap-2 align-center text-center  ${Auth.loggedIn() ? 'justify-between' : 'justify-center'}`}>
 				<Link className="flex items-center hover:text-white hover:no-underline" to="/">
 					<h1

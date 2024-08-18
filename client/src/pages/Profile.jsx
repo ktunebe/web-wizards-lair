@@ -44,7 +44,7 @@ const Profile = () => {
 
 	return (
 		<div>
-			<div className="container nes-container with-title text-white is-centered">
+			<div className="container bg-jet nes-container with-title text-white is-centered">
 				<p className="title nes-text !bg-jet " style={{ fontSize: '2rem' }}>
 					{user.username}
 				</p>
