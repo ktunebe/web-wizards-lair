@@ -7,6 +7,8 @@ import {
 	Button,
 } from '@headlessui/react'
 
+import { passedResponses, failedResponses } from './WizardDialog'
+
 const PassFailModal = ({
 	isOpen,
 	setIsOpen,
@@ -15,7 +17,11 @@ const PassFailModal = ({
 	userOutputArray,
 	answerStatus,
 }) => {
-	
+
+	const grabDialog = (array) => {
+		return array[Math.floor(Math.random() * array.length)]
+	}
+
 	const handlePass = () => {
 		setIsOpen(false)
 		window.location.reload()
@@ -27,19 +33,19 @@ const PassFailModal = ({
 			<div className="fixed inset-0 w-screen overflow-y-auto p-4">
 				<div className="flex min-h-full items-center justify-center">
 					<DialogPanel className="w-3/4 space-y-4 border bg-jet text-lightGray p-12">
-						<DialogTitle className="font-bold">{`${
+						<DialogTitle className="pb-4 font-bold text-2xl text-white text-center">{`${
 							answerStatus ? 'You passed!' : 'You failed!'
 						}`}</DialogTitle>
-						<Description>Test Results: </Description>
+						<Description className='text-white'>Test Results: </Description>
 						{data.problem.tests.map((test, index) => {
 							const answer = data.problem.answers[index]
 							const userOutput = userOutputArray[index]
 							const result = testResultsArray[index]
 							return (
-								<div key={test} className={`text-white border-4 p-4 rounded`}>
-									<p>{`Expect ${test} to equal: ${answer}.`}</p>{' '}
+								<div key={test} className={`text-white border-4 p-4 rounded flex flex-col items-start`}>
+									<p className='py-2'>{`Expect ${test} to equal: ${answer}.`}</p>{' '}
 									<p
-										className={`rounded w-1/2 ${
+										className={`rounded p-1 ${
 											result ? 'bg-green-800' : 'bg-lannisterRed'
 										}`}>
 										Your output: {userOutput}
@@ -49,9 +55,9 @@ const PassFailModal = ({
 						})}
 						<div className="flex flex-col">
 							<div className="nes-balloon from-right self-end">
-								<p className="self-start">You smell!!</p>
+								<p className="self-start text-black">{answerStatus ? grabDialog(passedResponses) : grabDialog(failedResponses)}</p>
 							</div>
-							<img className="self-end" src="misc-images/archmage.png" />
+							<img className="self-end" src="misc-images/archmage.png" alt='image of arch-mage' />
 						</div>
 						<Button
 							className={`rounded ${
