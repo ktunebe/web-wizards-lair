@@ -37,7 +37,7 @@ function App() {
 			<div className="flex flex-col justify-start text-lightGray stone-background  min-h-screen">
 				<Header />
 				<div
-					className="flex flex-col items-center justify-between"
+					className="flex flex-col items-center justify-between bg-black/40 pt-6"
 					style={{ flex: 1, overflowY: 'auto' }}>
 					<Outlet />
 				</div>
