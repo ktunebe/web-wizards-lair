@@ -119,6 +119,7 @@ const Signup = ({ isOpen, setIsOpen }) => {
 										)}
 									/>
 								</Field>
+								{/* Imported from AvatarBank.jsx */}
 									<AvatarBank
 										selectedAvatar={selectedAvatar}
 										setSelectedAvatar={setSelectedAvatar}

@@ -1,10 +1,13 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Button } from '@headlessui/react'
 import Auth from '../../utils/auth'
 
 const Header = () => {
+	const navigate = useNavigate()
+
 	const logout = (event) => {
 		event.preventDefault()
+		navigate('/')
 		Auth.logout()
 	}
 	return (

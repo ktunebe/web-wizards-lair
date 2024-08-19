@@ -35,6 +35,7 @@ const PassFailModal = ({
 							answerStatus ? 'You passed!' : 'You failed!'
 						}`}</DialogTitle>
 						<Description className='text-white'>Test Results: </Description>
+						{/* Map through tests and display each one as pass or fail */}
 						{data.problem.tests.map((test, index) => {
 							console.log(userOutputArray)
 							const answer = data.problem.answers[index]
@@ -62,6 +63,7 @@ const PassFailModal = ({
 							className={`rounded ${
 								answerStatus ? 'bg-green-800' : 'bg-lannisterRed'
 							} py-2 px-4 text-sm border-2 text-white data-[hover]:bg-jet data-[active]:bg-jet`}
+							// Handle pass and move on to new question if correct, try again just closes the modal and does not reset contents if incorrect
 							onClick={answerStatus ? handlePass : () => setIsOpen(false)}>
 							{`${answerStatus ? 'Continue' : 'Try Again'}`}
 						</Button>

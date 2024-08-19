@@ -48,7 +48,7 @@ const Profile = () => {
 				<p className="title nes-text !bg-jet " style={{ fontSize: '2rem' }}>
 					{user.username}
 				</p>
-				<div className="size-32 flex flex-col sm:flex-row gap-4 justify-center items-center">
+				<div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
 					<img
 						className="nes-container is-rounded w-1/2 sm:w-1/3"
 						src={user.avatar}

@@ -135,8 +135,9 @@ const CodeEditor = () => {
 
 			<div className="w-full flex flex-col items-center">
 				<div className="container flex flex-col md:flex-row items-center md:gap-4 w-full md:h-[50vh]">
+					{/* Message pops up on narrow screens to recommend larger screen */}
 					{viewportWidth < 768 ? (
-						<p className="w-3/4 text-center text-red-500 border border-red-500 p-2 mb-2">
+						<p className="w-3/4 text-center bg-lannisterRed text-white border border-white p-2 mb-2">
 							You may want to return on a larger screen!
 						</p>
 					) : (
@@ -144,6 +145,7 @@ const CodeEditor = () => {
 					)}
 					<div className="flex flex-col justify-center items-center text-center min-h-64 h-1/2 md:h-full w-2/3 md:w-2/5 scroll-img whitespace-pre-line overflow-y-auto">
 						<div className='h-3/4 flex flex-col justify-evenly items-center'>
+						{/* Narrow or short vertical screen size will cause lore to disappear leaving more room for instructions */}
 							{viewportWidth < 768 || viewportHeight < 700 ? (
 								''
 							) : (
