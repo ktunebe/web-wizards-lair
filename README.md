@@ -11,7 +11,7 @@ As you delve deeper into the dungeon’s eerie corridors, each level presents a 
 
 Follow the link below to embark on your journey through the dungeon.  Good luck, remember it's dangerous to go alone.  [Take this for safety](https://www.w3schools.com/js/default.asp).
 
-[Deployed Site](https://project-3-cowabunga.onrender.com/)
+[Deployed Site](https://web-wizards-lair.onrender.com/)
 
 
 ## Usage
